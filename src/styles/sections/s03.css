@@ -8,7 +8,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 200px 260px;
+  padding: 200px var(--side-padding);
   overflow: hidden;
 }
 

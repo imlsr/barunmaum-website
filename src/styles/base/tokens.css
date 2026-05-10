@@ -103,6 +103,11 @@
 
   --container:  1400px;
   --gnb-height: 80px;
+
+  /* 좌우 가운데 정렬용 패딩 — 뷰포트가 1920px 보다 넓을 때 컨테이너(1400px)
+     를 가운데 두고, 1480px 이하에서는 최소 40px 만큼 숨 쉴 공간 확보.
+     1920px 일 때 정확히 260px (Figma 디자인 기준) */
+  --side-padding: max(40px, calc((100vw - 1400px) / 2));
 }
 
 ::selection {

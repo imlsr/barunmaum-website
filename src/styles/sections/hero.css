@@ -51,8 +51,9 @@
   position: absolute;
   /* hero 가 카드로 변환되며 margin-left 가 0→40px 늘어나도
      텍스트는 viewport 기준 같은 위치를 유지하도록 좌측 보정 */
-  left: calc(260px - var(--hero-margin, 0px));
-  top: 560px;
+  left: calc(120px - var(--hero-margin, 0px));
+  bottom: 200px;
+  top: auto;
   z-index: 2;
   transform: none;
   transition: none;
