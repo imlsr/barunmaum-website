@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# logs
+*.log
+npm-debug.log*
+
+# env
+.env
+.env.local
+
+# build / cache
+dist/
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editors
+.idea/
+
+# Claude local settings
+.claude/settings.local.json

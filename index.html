@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>서울바른마음치과 — Right Heart, Honest Care.</title>
+  <meta name="description" content="시흥동 서울바른마음치과 — 자연치아를 우선으로, 신뢰를 바탕으로 진료합니다." />
+
+  <!-- 폰트: Pretendard -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css" />
+
+  <!-- 폰트: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- GNB · 기본 오버레이 — 스크롤 시 hero-compact 로 흰 배경 전환 (Figma 358:85, 272:85) -->
+  <header class="site-header gnb gnb--overlay" aria-label="전역 헤더">
+    <div class="gnb__inner">
+      <a class="gnb__logo" href="/" aria-label="서울바른마음치과 홈">
+        <img class="gnb__logo-img gnb__logo-img--light"
+             src="https://www.figma.com/api/mcp/asset/089faf5a-d611-4c6f-ab17-3b37c33e9455"
+             alt=""
+             width="168"
+             height="30"
+             decoding="async" />
+        <img class="gnb__logo-img gnb__logo-img--dark"
+             src="https://www.figma.com/api/mcp/asset/2c36abcf-a548-4f2a-af19-fda80b04a4b4"
+             alt=""
+             width="168"
+             height="30"
+             decoding="async"
+             aria-hidden="true" />
+      </a>
+      <nav class="gnb__menu" aria-label="주 메뉴">
+        <a href="#">서울바른마음치과</a>
+        <a href="#">임플란트</a>
+        <a href="#">자연치아 살리기</a>
+        <a href="#">치아교정</a>
+        <a href="#">사랑니발치</a>
+        <a href="#">치아미백</a>
+        <a href="#">커뮤니티</a>
+      </nav>
+      <a class="btn btn--primary btn--medium gnb__cta" href="#">상담문의</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- S00 비디오 히어로 — Figma 411:60 -->
+    <section class="hero" aria-label="메인 비주얼">
+      <div class="hero__bg" aria-hidden="true">
+        <video class="hero__video"
+               autoplay
+               muted
+               loop
+               playsinline
+               preload="auto"
+               poster="">
+          <source src="./assets/video/main_video.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__overlay"></div>
+      </div>
+
+      <div class="hero__content">
+        <h1 class="hero__title">
+          Right Heart<br />
+          Honest Care
+        </h1>
+        <p class="hero__subtitle">
+          시흥동 10년, 환자 1만 명과 함께한 동네 치과<br />
+          복지부 인증 치과 전문의 3인이 함께합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- S01 약속 — Figma 249:863 -->
+    <section class="section-s01" id="s01" aria-labelledby="s01-heading">
+      <div class="section-s01__copy reveal">
+        <div class="section-s01__text-block">
+          <h2 class="s01__title" id="s01-heading">
+            서울바른마음치과가<br />
+            약속합니다.
+          </h2>
+          <p class="section-s01__lead">
+            시흥동에서 10년, 동네 주민분들의 일상을 함께한 시간이<br />
+            환자분들을 더 깊이 이해하는 진료로 이어졌습니다.<br />
+            지나치게 권하지 않고, 꼭 필요한 것만 정성껏.<br />
+            <br />
+            실력 있는 의료진과 통증 관리, 안전한 위생,<br />
+            그리고 꾸준한 사후관리까지.<br />
+            4가지 원칙으로 약속드립니다.
+          </p>
+        </div>
+        <a class="s01__btn section-s01__cta" href="#">자세히 보기</a>
+      </div>
+      <div class="s01__cards reveal-stagger">
+        <article class="s01-card">
+          <img src="https://www.figma.com/api/mcp/asset/b07155c2-2925-4f6e-8a7a-4454f8bb3bf5"
+               alt=""
+               width="450"
+               height="320"
+               loading="lazy"
+               decoding="async" />
+          <div class="s01-card__overlay" aria-hidden="true"></div>
+          <p class="s01-card__title">실력있는 의료진</p>
+        </article>
+        <article class="s01-card">
+          <img src="./assets/s01-card-pain-management.png"
+               alt=""
+               width="450"
+               height="320"
+               loading="lazy"
+               decoding="async" />
+          <div class="s01-card__overlay" aria-hidden="true"></div>
+          <p class="s01-card__title">통증 관리 시스템</p>
+        </article>
+        <article class="s01-card">
+          <img src="./assets/s01-card-hygiene-safe.png"
+               alt=""
+               width="450"
+               height="320"
+               loading="lazy"
+               decoding="async" />
+          <div class="s01-card__overlay" aria-hidden="true"></div>
+          <p class="s01-card__title">위생적이고 안전한 진료</p>
+        </article>
+        <article class="s01-card">
+          <img src="https://www.figma.com/api/mcp/asset/55bd6d29-e537-49ac-8dd8-46c022689717"
+               alt=""
+               width="450"
+               height="320"
+               loading="lazy"
+               decoding="async" />
+          <div class="s01-card__overlay" aria-hidden="true"></div>
+          <p class="s01-card__title">철저한 사후관리</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- S02 진료 — Figma 411:79 · 무한 마키 -->
+    <section class="section-s02" id="s02" aria-labelledby="s02-heading">
+      <header class="s02-header reveal">
+        <h2 id="s02-heading" class="s02-title">환자의 눈높이에 맞춘 진료</h2>
+        <p class="s02-sub">
+          정직한 진료와 따뜻한 마음으로 다가갑니다.<br />
+          환자분의 상황에 맞춰, 가장 알맞은 진료 방향을 함께 찾습니다.
+        </p>
+      </header>
+
+      <div class="s02-marquee">
+        <div class="s02-marquee__fade s02-marquee__fade--left" aria-hidden="true"></div>
+        <div class="s02-marquee__fade s02-marquee__fade--right" aria-hidden="true"></div>
+        <div class="s02-marquee__viewport">
+          <div class="s02-marquee__track">
+            <article class="s02-card s02-card--bg1">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-01-cavity.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">충치치료</p>
+              <p class="s02-card__desc">깎지 않아도 되는 치아는 그대로 둡니다</p>
+            </article>
+            <article class="s02-card s02-card--bg2">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-02-implant.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">임플란트</p>
+              <p class="s02-card__desc">잃은 치아 자리에, 자연스러움을 다시</p>
+            </article>
+            <article class="s02-card s02-card--bg3">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-03-save.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">자연치아 살리기</p>
+              <p class="s02-card__desc">뽑기 전에 한 번 더 살펴보는 진료</p>
+            </article>
+            <article class="s02-card s02-card--bg4">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-04-whitening.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">치아미백</p>
+              <p class="s02-card__desc">자극은 줄이고, 맑기는 그대로</p>
+            </article>
+            <article class="s02-card s02-card--bg5">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-05-gum.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">잇몸치료</p>
+              <p class="s02-card__desc">잇몸이 단단해야, 치아도 오래갑니다</p>
+            </article>
+            <article class="s02-card s02-card--bg6">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-06-ortho.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">치아교정</p>
+              <p class="s02-card__desc">일상에 부담 없는 교정 설계</p>
+            </article>
+
+            <article class="s02-card s02-card--bg1" aria-hidden="true">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-01-cavity.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">충치치료</p>
+              <p class="s02-card__desc">깎지 않아도 되는 치아는 그대로 둡니다</p>
+            </article>
+            <article class="s02-card s02-card--bg2" aria-hidden="true">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-02-implant.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">임플란트</p>
+              <p class="s02-card__desc">잃은 치아 자리에, 자연스러움을 다시</p>
+            </article>
+            <article class="s02-card s02-card--bg3" aria-hidden="true">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-03-save.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">자연치아 살리기</p>
+              <p class="s02-card__desc">뽑기 전에 한 번 더 살펴보는 진료</p>
+            </article>
+            <article class="s02-card s02-card--bg4" aria-hidden="true">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-04-whitening.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">치아미백</p>
+              <p class="s02-card__desc">자극은 줄이고, 맑기는 그대로</p>
+            </article>
+            <article class="s02-card s02-card--bg5" aria-hidden="true">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-05-gum.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">잇몸치료</p>
+              <p class="s02-card__desc">잇몸이 단단해야, 치아도 오래갑니다</p>
+            </article>
+            <article class="s02-card s02-card--bg6" aria-hidden="true">
+              <div class="s02-card__media">
+                <img src="./assets/s02_thum/card-06-ortho.png"
+                     alt=""
+                     width="332"
+                     height="300"
+                     loading="lazy"
+                     decoding="async" />
+              </div>
+              <p class="s02-card__title">치아교정</p>
+              <p class="s02-card__desc">일상에 부담 없는 교정 설계</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S03 — Figma 249:905 -->
+    <section class="section-s03" aria-labelledby="s03-heading">
+      <div class="s03__bg" aria-hidden="true">
+        <img class="s03__bg-img"
+             src="./assets/s03-bg.png"
+             alt=""
+             width="1920"
+             height="800"
+             decoding="async" />
+      </div>
+
+      <div class="s03__left reveal">
+        <div class="s03__text">
+          <img class="s03__quote"
+               src="https://www.figma.com/api/mcp/asset/e348f44c-dd01-4b02-aa68-20325a38e3fc"
+               alt=""
+               width="28"
+               height="22"
+               decoding="async" />
+          <h2 class="s03__title" id="s03-heading">
+            10년째, 같은 자리에서 같은 마음으로
+          </h2>
+          <p class="s03__body">
+            서울바른마음치과는 시흥동에서 나고 자란 토박이 원장이<br />
+            10여 년 동안 한결같이 지역 주민들과 함께해온 공간입니다.<br />
+            치과의사의 꿈이 시작된 이 동네에서,<br />
+            주민들의 건강과 행복을 위해 최선을 다하고 있습니다.
+          </p>
+        </div>
+        <a href="#" class="s03__btn">자세히 보기</a>
+      </div>
+
+      <div class="s03__video reveal" aria-label="비디오 영역">
+        <button type="button" class="s03__play" aria-label="동영상 재생">
+          <img src="https://www.figma.com/api/mcp/asset/2ebdfc37-6f75-45ff-b255-27b4a7f58405"
+               alt=""
+               width="28"
+               height="34"
+               decoding="async" />
+        </button>
+      </div>
+    </section>
+
+    <!-- S04 대표원장 소개 — Figma 249:937 -->
+    <section class="section-s04" aria-labelledby="s04-heading">
+      <div class="s04__photo reveal">
+        <img src="https://www.figma.com/api/mcp/asset/cbe096d5-26cb-4e34-b11e-de8c517b64f8"
+             alt="김성재 대표원장"
+             width="580"
+             height="680"
+             loading="lazy"
+             decoding="async" />
+      </div>
+
+      <div class="s04__content reveal">
+        <div class="s04__text">
+          <p class="s04__label">통합치의학과 전문의</p>
+          <h2 class="s04__title" id="s04-heading"><strong>김성재</strong> 대표원장</h2>
+          <ul class="s04__credentials">
+            <li>보건복지부인증 통합치의학과 전문의</li>
+            <li>경희대학교 치과대학병원 외래교수</li>
+            <li>경희대학교 치의학전문대학원 졸업</li>
+            <li>경희대학교 치의학대학원 박사 수료 (치과보존학 전공)</li>
+            <li>미국 HAVARD MEDICAL SCHOOL CME</li>
+            <li>세계 임플란트학회(ICOI) 정회원</li>
+            <li>세계 임플란트학회(ICOI) 정회원</li>
+            <li>미국 치과임플란트학회(AAID) 정회원</li>
+            <li>미국 심미치과학회(AACD) 정회원</li>
+            <li>대한 구강악안면 임플란트학회 정회원</li>
+            <li>대한 치과보존학회 정회원</li>
+            <li>대한 턱관절교합학회 정회원</li>
+          </ul>
+        </div>
+
+        <div class="s04__doctors">
+          <div class="s04__doctors-line" aria-hidden="true"></div>
+          <div class="s04__doctor s04__doctor--active">
+            <span class="s04__doctor-dot s04__doctor-dot--active"></span>
+            <span class="s04__doctor-name">김성재 대표원장</span>
+          </div>
+          <div class="s04__doctor">
+            <span class="s04__doctor-dot"></span>
+            <span class="s04__doctor-name">이세한 원장</span>
+          </div>
+          <div class="s04__doctor">
+            <span class="s04__doctor-dot"></span>
+            <span class="s04__doctor-name">양승원 원장</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S05 시흥동 통계 — Figma 249:998 -->
+    <section class="section-s05" aria-labelledby="s05-heading">
+      <div class="s05__container">
+        <header class="s05__header reveal">
+          <div class="s05__text">
+            <h2 class="s05__title" id="s05-heading">
+              시흥동에서 10여 년<br />
+              임플란트 시술 10,000건
+            </h2>
+            <p class="s05__sub">
+              한자리에서 묵묵히 10년 이상 경력의 전문의 3인이 협진하여<br />
+              한 분 한 분에게 정확한 진단과 안전한 시술을 제공해온 결과, 1만 건의 만족스러운 결과로 이어졌습니다.
+            </p>
+          </div>
+          <a href="#" class="s05__btn">자세히 보기</a>
+        </header>
+
+        <div class="s05__cards reveal-stagger">
+          <article class="s05-card s05-card--default">
+            <div class="s05-card__text">
+              <p class="s05-card__label">성공률</p>
+              <div class="s05-card__value">
+                <span class="s05-card__num">99.3</span>
+                <span class="s05-card__unit">%</span>
+              </div>
+            </div>
+            <img class="s05-card__icon"
+                 src="https://www.figma.com/api/mcp/asset/b6aab71e-88ce-4f11-85aa-59b6d31d8cc0"
+                 alt=""
+                 width="130"
+                 height="130"
+                 loading="lazy"
+                 decoding="async" />
+          </article>
+
+          <article class="s05-card s05-card--accent">
+            <div class="s05-card__text">
+              <p class="s05-card__label">임플란트 시술</p>
+              <div class="s05-card__value">
+                <span class="s05-card__num">10,000</span>
+                <span class="s05-card__unit">건</span>
+              </div>
+            </div>
+            <img class="s05-card__icon"
+                 src="https://www.figma.com/api/mcp/asset/59e9ad14-9fab-4719-bdf1-d11237125b93"
+                 alt=""
+                 width="130"
+                 height="130"
+                 loading="lazy"
+                 decoding="async" />
+          </article>
+
+          <article class="s05-card s05-card--default">
+            <div class="s05-card__text">
+              <p class="s05-card__label">무통치료</p>
+              <div class="s05-card__value">
+                <span class="s05-card__num">13,000</span>
+                <span class="s05-card__unit">건</span>
+              </div>
+            </div>
+            <img class="s05-card__icon"
+                 src="https://www.figma.com/api/mcp/asset/19fba743-57fd-4301-84a7-a1f1b57be21c"
+                 alt=""
+                 width="130"
+                 height="130"
+                 loading="lazy"
+                 decoding="async" />
+          </article>
+
+          <article class="s05-card s05-card--primary">
+            <div class="s05-card__text">
+              <p class="s05-card__label">생존율</p>
+              <div class="s05-card__value">
+                <span class="s05-card__num">98.5</span>
+                <span class="s05-card__unit">%</span>
+              </div>
+            </div>
+            <img class="s05-card__icon"
+                 src="https://www.figma.com/api/mcp/asset/2b7441da-5d30-44ba-b6f9-37181a1435a9"
+                 alt=""
+                 width="130"
+                 height="130"
+                 loading="lazy"
+                 decoding="async" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- S06 자연치아 CTA — Figma 260:1127 -->
+    <section class="section-s06" aria-label="자연치아 보존 진료 안내">
+      <div class="s06__bg" aria-hidden="true">
+        <img class="s06__bg-img"
+             src="https://www.figma.com/api/mcp/asset/ec4749bd-a180-4f9e-ab51-9786b7648592"
+             alt=""
+             width="1840"
+             height="557"
+             loading="lazy"
+             decoding="async" />
+        <div class="s06__bg-overlay"></div>
+      </div>
+
+      <div class="s06__content reveal">
+        <div class="s06__text">
+          <h2 class="s06__title">
+            치아를 뽑기 전에<br />
+            한 번 더 고민합니다
+          </h2>
+          <p class="s06__sub">
+            치과보존학 박사가 자연치아 살리기를 오랫동안 연구해온 결과,<br />
+            다양한 방법으로 치아를 보존하는 진료를 제공합니다.
+          </p>
+        </div>
+        <a href="#" class="s06__btn">자세히 보기</a>
+      </div>
+    </section>
+
+    <!-- S07 오시는 길 — Figma 266:6806 -->
+    <section class="section-s07" aria-label="오시는 길">
+      <div class="s07__info reveal">
+        <div class="s07__block s07__block--phone">
+          <p class="s07__label">대표전화</p>
+          <p class="s07__phone">02.895.7522</p>
+        </div>
+
+        <div class="s07__block s07__block--address">
+          <p class="s07__label">오시는 길</p>
+          <p class="s07__text">서울시 금천구 독산로 135-1(시흥동) 2층</p>
+        </div>
+
+        <div class="s07__block s07__block--parking">
+          <p class="s07__label">주차안내</p>
+          <p class="s07__text">
+            금천구 독산로 135 한중약국 주차장 (치과건물건너편)<br />
+            진료 시 주차비 지원
+          </p>
+        </div>
+
+        <div class="s07__block s07__block--hours">
+          <p class="s07__label">진료안내</p>
+          <table class="s07__hours">
+            <tr>
+              <th scope="row">평     일</th>
+              <td>오전 9시 30분 ~ 오후 6시 30분</td>
+            </tr>
+            <tr>
+              <th scope="row">화  ·  목</th>
+              <td>오전 9시 30분 ~ 오후 8시 30분</td>
+            </tr>
+            <tr>
+              <th scope="row">토 요 일</th>
+              <td>오전 9시 ~ 오후 2시</td>
+            </tr>
+            <tr>
+              <th scope="row">점     심</th>
+              <td>오후 1시 ~ 오후 2시</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <a href="https://map.naver.com/p?query=서울바른마음치과"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="s07__map reveal"
+         aria-label="네이버 지도에서 서울바른마음치과 보기">
+        <img class="s07__map-img"
+             src="https://www.figma.com/api/mcp/asset/50efedb1-4585-4d72-bd00-e3e420beb09c"
+             alt="서울바른마음치과 위치"
+             width="800"
+             height="520"
+             loading="lazy"
+             decoding="async" />
+        <img class="s07__map-marker"
+             src="https://www.figma.com/api/mcp/asset/def4f0ba-82a3-4b82-8747-141fce2a3e7b"
+             alt=""
+             width="170"
+             height="52"
+             aria-hidden="true"
+             decoding="async" />
+      </a>
+    </section>
+
+    <!-- 하단 CTA — Figma 266:177 -->
+    <section class="section-cta" aria-label="무료 상담 안내">
+      <div class="cta__decor" aria-hidden="true">
+        <img class="cta__circle cta__circle--left"
+             src="https://www.figma.com/api/mcp/asset/da1eb4f4-0393-4b13-9191-7020cc395afc"
+             alt=""
+             width="1106"
+             height="1092"
+             decoding="async" />
+        <img class="cta__circle cta__circle--right"
+             src="https://www.figma.com/api/mcp/asset/b27de3ac-f742-4658-8bbf-d0e5700ebb3c"
+             alt=""
+             width="1348"
+             height="1120"
+             decoding="async" />
+        <img class="cta__q cta__q--main"
+             src="https://www.figma.com/api/mcp/asset/fc9de64c-2c7e-4996-b69e-a2a042badac3"
+             alt=""
+             width="264"
+             height="473"
+             decoding="async" />
+        <img class="cta__q cta__q--small-l"
+             src="https://www.figma.com/api/mcp/asset/3795eca4-42a5-4917-9799-3bf78357efe2"
+             alt=""
+             width="142"
+             height="200"
+             decoding="async" />
+        <img class="cta__q cta__q--small-t"
+             src="https://www.figma.com/api/mcp/asset/3795eca4-42a5-4917-9799-3bf78357efe2"
+             alt=""
+             width="68"
+             height="96"
+             decoding="async" />
+      </div>
+
+      <div class="cta__content">
+        <h2 class="cta__title reveal">
+          한 번의 상담으로,<br />
+          오랜 궁금증을 해결해드립니다.
+        </h2>
+        <a href="#" class="cta__btn reveal">무료 상담 신청</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <img class="footer__logo"
+             src="https://www.figma.com/api/mcp/asset/5003d3cd-cc75-4116-85ad-41cdb4bb43a6"
+             alt="서울바른마음치과"
+             width="168"
+             height="30"
+             decoding="async" />
+        <p class="footer__info">의료기관명: 서울바른마음치과의원      대표자: 김성재  |  사업자번호: XXX-XX-XXXXX<br />주소: 서울특별시 금천구 시흥대로 XXX      대표번호: 02-XXX-XXXX</p>
+      </div>
+
+      <nav class="footer__links" aria-label="정책 링크">
+        <a href="#">개인정보처리방침</a>
+        <a href="#">의료광고 심의 안내</a>
+        <a href="#">비급여 진료비 안내</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">네이버 블로그</a>
+      </nav>
+
+      <hr class="footer__divider" />
+
+      <p class="footer__copyright">
+        Copyright © 2026 서울바른마음치과. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- S01 구간부터 노출 · 뷰포트 우하단 고정 -->
+  <div class="fab-stack" id="fab-stack" aria-hidden="true">
+    <button type="button" class="fab fab--quick" aria-label="퀵 메뉴 열기">
+      <svg class="fab__icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/>
+      </svg>
+      <span class="fab__label">QUICK</span>
+    </button>
+    <button type="button" class="fab fab--top" aria-label="페이지 상단으로 이동">
+      <svg class="fab__icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 5 19 14h-5v7H10v-7H5l7-9z"/>
+      </svg>
+      <span class="fab__label">TOP</span>
+    </button>
+  </div>
+
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="./main.js" defer></script>
+</body>
+</html>

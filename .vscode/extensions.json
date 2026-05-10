@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "ritwickdey.LiveServer",
+    "EditorConfig.EditorConfig",
+    "formulahendry.auto-rename-tag",
+    "naumovs.color-highlight"
+  ]
+}

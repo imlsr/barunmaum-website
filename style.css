@@ -1,0 +1,2037 @@
+/* ============================================================
+ * 서울바른마음치과 메인페이지 — GNB + Hero (풀스크롤 ⇄ 카드, main.js)
+ * 디자인 기준 1920 / 컨테이너 1400 / BP: 1400 · 1024 · 768 · 480
+ * ============================================================ */
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* 디자인 시스템 토큰 — Figma 변수 1:1 매핑 (:root 이름 동일)       */
+/* (실제 값은 MCP get_variable_defs 로 검증 권장)                  */
+/* ──────────────────────────────────────────────────────────── */
+:root {
+  /* Color: Primary */
+  --primary-50:  #eaf6fc;
+  --primary-100: #c8e6f6;
+  --primary-200: #a3d5ef;
+  --primary-300: #7ec3e8;
+  --primary-400: #5fb1e1;
+  --primary-500: #3f9fdb;
+  --primary-600: #2f8bc4;
+  --primary-700: #2470a3;
+  --primary-800: #1c5781;
+  --primary-900: #143e5e;
+
+  /* Color: Secondary */
+  --secondary-50:  #ebeef9;
+  --secondary-100: #c8d0ee;
+  --secondary-200: #a2afe1;
+  --secondary-300: #7d8dd3;
+  --secondary-400: #5a6cc1;
+  --secondary-500: #213e9c;
+  --secondary-600: #1c3589;
+  --secondary-700: #172a6e;
+  --secondary-800: #122054;
+  --secondary-900: #0c163b;
+
+  /* Color: Accent */
+  --accent-50:  #fcefe8;
+  --accent-100: #f7d6c5;
+  --accent-200: #f2bba0;
+  --accent-300: #ec9e79;
+  --accent-400: #e6855a;
+  --accent-500: #e07141;
+  --accent-600: #c75d31;
+  --accent-700: #a44a26;
+  --accent-800: #7e391e;
+  --accent-900: #582818;
+
+  /* Color: Neutral */
+  --neutral-0:    #ffffff;
+  --neutral-50:   #f4f6f9;
+  --neutral-100:  #eff2f5;
+  --neutral-200:  #dfe3e7;
+  --neutral-300:  #c4cad1;
+  --neutral-400:  #9da4ab;
+  --neutral-500:  #7c868e;
+  --neutral-600:  #5f676e;
+  --neutral-700:  #424a52;
+  --neutral-800:  #2a2f35;
+  --neutral-900:  #1f2429;
+  --neutral-1000: #14181c;
+
+  /* Color: Semantic */
+  --semantic-success-bg:   #e6f4ec;
+  --semantic-success-main: #2e8b57;
+  --semantic-warning-bg:   #fff5e0;
+  --semantic-warning-main: #d99100;
+  --semantic-error-bg:     #fde8e8;
+  --semantic-error-main:   #d64545;
+  --semantic-info-bg:      #e7f1fb;
+  --semantic-info-main:    #2a7fc4;
+
+  /* Color: Overlay */
+  --overlay-dark-40:    rgba(0, 0, 0, 0.4);
+  --overlay-dark-10:    rgba(0, 0, 0, 0.1);
+  --overlay-primary-40: rgba(63, 159, 219, 0.4);
+
+  /* Spacing */
+  --space-0:   0;
+  --space-2:   2px;
+  --space-4:   4px;
+  --space-8:   8px;
+  --space-12:  12px;
+  --space-16:  16px;
+  --space-20:  20px;
+  --space-24:  24px;
+  --space-32:  32px;
+  --space-40:  40px;
+  --space-48:  48px;
+  --space-64:  64px;
+  --space-80:  80px;
+  --space-96:  96px;
+  --space-120: 120px;
+  --space-150: 150px;
+  --space-260: 260px;
+
+  /* Radius */
+  --radius-none: 0;
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-full: 999px;
+
+  /* Sizing */
+  --height-sm: 48px;
+  --height-md: 64px;
+
+  --container:  1400px;
+  --gnb-height: 80px;
+}
+
+::selection {
+  background-color: #3F9FDB;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #3F9FDB;
+  color: #ffffff;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* Reset                                                        */
+/* ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  block-size: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  background: var(--neutral-0);
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui,
+               'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--neutral-900);
+  background: var(--neutral-0);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-block-size: 100%;
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+main {
+  max-inline-size: 100%;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* Scroll Reveal                                                    */
+/* ──────────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.15s; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.25s; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.35s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.55s; }
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* 버튼 — primary medium (GNB CTA 공통)                           */
+/* ──────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-width: 78px;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn--medium {
+  height: var(--height-sm);
+  padding: 0 var(--space-20);
+  font-size: 17px;
+  line-height: 1.3;
+  border-radius: 64px;
+}
+
+.btn--primary {
+  background: var(--primary-500);
+  color: var(--neutral-0);
+  border-color: var(--primary-500);
+}
+
+.btn--outline {
+  background: var(--neutral-0);
+  color: var(--neutral-900);
+  border-color: var(--neutral-300);
+  font-weight: 600;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* 레이아웃 컨테이너 — max-width 1400 · 가운데 정렬                   */
+/* ──────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 40px;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* GNB — fixed · 상단에서는 오버레이, 스크롤 후 흰 바 (358:85)           */
+/* ──────────────────────────────────────────────────────────── */
+.site-header.gnb {
+  width: 100%;
+  height: var(--gnb-height);
+  z-index: 300;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition:
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.35s ease;
+}
+
+body:not(.hero-compact) .site-header.gnb.gnb--overlay {
+  background: transparent;
+  border-block-end: 1px solid transparent;
+  color: var(--neutral-0);
+}
+
+body.hero-compact .site-header.gnb {
+  background: var(--neutral-0);
+  border-block-end: 1px solid var(--neutral-100);
+  color: var(--neutral-700);
+}
+
+body.hero-compact .gnb__menu {
+  color: var(--neutral-700);
+}
+
+.gnb__inner {
+  width: 100%;
+  max-width: 100%;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 16px 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* 로고 우측 40px 간격 · CTA 좌측 40px */
+.gnb__logo {
+  position: relative;
+  flex-shrink: 0;
+  align-self: center;
+  padding-inline-end: 40px;
+  inline-size: 168px;
+  block-size: 30px;
+}
+
+.gnb__logo-img {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 168px;
+  height: 30px;
+  object-fit: contain;
+  transition: opacity 0.35s ease;
+}
+
+body:not(.hero-compact) .gnb__logo-img--dark {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.hero-compact .gnb__logo-img--light {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 메뉴 7 — min-inline-size: 0 로 flex 행 너비 초과 방지 */
+.gnb__menu {
+  flex: 1;
+  min-inline-size: 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-80);
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.gnb__cta {
+  flex-shrink: 0;
+  margin-inline-start: 40px;
+  font: 600 15px/1 Pretendard, sans-serif;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* Hero — 비디오 배경 풀스크린 (Figma 411:60)                          */
+/* ──────────────────────────────────────────────────────────── */
+.hero {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 0;
+  width: calc(100% - (2 * var(--hero-margin, 0px)));
+  height: 100vh;
+  min-height: 1080px;
+  margin-left: var(--hero-margin, 0px);
+  margin-right: var(--hero-margin, 0px);
+  overflow: hidden;
+  border-radius: var(--hero-radius, 0px);
+  background: #000;
+  transition-property: margin-left, margin-right, border-radius;
+  transition-duration: 0.05s;
+  transition-timing-function: linear;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+.hero__content {
+  position: absolute;
+  /* hero 가 카드로 변환되며 margin-left 가 0→40px 늘어나도
+     텍스트는 viewport 기준 같은 위치를 유지하도록 좌측 보정 */
+  left: calc(260px - var(--hero-margin, 0px));
+  top: 560px;
+  z-index: 2;
+  transform: none;
+  transition: none;
+  opacity: 1;
+  will-change: auto;
+}
+
+.hero__title {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 80px;
+  letter-spacing: -1.44px;
+  color: #ffffff;
+}
+
+.hero__subtitle {
+  margin: 30px 0 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* S01 약속 — Figma 249:863                                            */
+/* ──────────────────────────────────────────────────────────── */
+.section-s01 {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  background: var(--neutral-0);
+  padding: 250px 260px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.section-s01__copy {
+  flex: 0 0 476px;
+  width: 476px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.section-s01__text-block {
+  width: 476px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.s01__title {
+  margin: 0;
+  width: 476px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+}
+
+.section-s01__lead {
+  margin: 0;
+  width: 476px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-800);
+}
+
+.s01__btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--neutral-900);
+  border-radius: 64px;
+  background: transparent;
+  color: var(--neutral-900);
+  text-decoration: none;
+}
+
+.s01__btn:hover {
+  background: var(--neutral-900);
+  color: var(--neutral-0);
+}
+
+.s01__cards {
+  flex: 0 0 924px;
+  width: 924px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.s01-card {
+  position: relative;
+  width: 450px;
+  height: 320px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.s01-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: bottom;
+  display: block;
+}
+
+.s01-card__overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 42.656%,
+    rgba(10, 36, 64, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+.s01-card__title {
+  position: absolute;
+  left: 32px;
+  top: 257px;
+  width: 410px;
+  margin: 0;
+  z-index: 1;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.24px;
+  color: var(--neutral-0);
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* S02 진료 — Figma 411:79 · 무한 마키                              */
+/* ──────────────────────────────────────────────────────────── */
+.section-s02 {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--neutral-0);
+  padding: 250px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.s02-header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.s02-title {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+  text-align: center;
+}
+
+.s02-sub {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-800);
+  text-align: center;
+}
+
+.s02-marquee {
+  position: relative;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.s02-marquee__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.s02-marquee__track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 24px;
+  width: max-content;
+  animation: s02-marquee-scroll 40s linear infinite;
+}
+
+.s02-marquee:hover .s02-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes s02-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-6 * (332px + 24px)));
+  }
+}
+
+.s02-marquee__fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.s02-marquee__fade--left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--neutral-0) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.s02-marquee__fade--right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--neutral-0) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.s02-card {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 332px;
+  height: 376px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.s02-card__media {
+  width: 332px;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
+
+.s02-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.s02-card--bg1 .s02-card__media {
+  background: #e1e4f0;
+}
+
+.s02-card--bg2 .s02-card__media {
+  background: #dde2ed;
+}
+
+.s02-card--bg3 .s02-card__media {
+  background: linear-gradient(180deg, #efeff7 0%, #e2e3ed 100%);
+}
+
+.s02-card--bg4 .s02-card__media {
+  background: linear-gradient(180deg, #e6e7ee 0%, #dee0e9 100%);
+}
+
+.s02-card--bg5 .s02-card__media {
+  background: transparent;
+}
+
+.s02-card--bg6 .s02-card__media {
+  background: #dedee6;
+}
+
+.s02-card__title {
+  margin: 16px 0 0;
+  font: 700 24px/1.3 Pretendard, sans-serif;
+  letter-spacing: -0.24px;
+  color: var(--neutral-900);
+  width: 100%;
+}
+
+.s02-card__desc {
+  margin: 5px 0 0;
+  font: 400 16px/1.3 Pretendard, sans-serif;
+  color: var(--neutral-800);
+  width: 269px;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* S03 스토리 — Figma 249:905                                          */
+/* ──────────────────────────────────────────────────────────── */
+.section-s03 {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 200px 260px;
+  overflow: hidden;
+}
+
+.s03__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.s03__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+
+.s03__left,
+.s03__video {
+  position: relative;
+  z-index: 1;
+  width: 660px;
+  flex-shrink: 0;
+}
+
+.s03__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.s03__text {
+  position: relative;
+  width: 660px;
+  height: 258px;
+}
+
+.s03__quote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 22px;
+  display: block;
+  transform: rotate(180deg);
+}
+
+.s03__title {
+  position: absolute;
+  top: 62px;
+  left: 0;
+  margin: 0;
+  width: 660px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-0);
+}
+
+.s03__body {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  margin: 0;
+  width: 660px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-0);
+}
+
+.s03__btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--neutral-0);
+  border-radius: 64px;
+  background: transparent;
+  color: var(--neutral-0);
+  text-decoration: none;
+}
+
+.s03__video {
+  height: 372px;
+  background: var(--neutral-800);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s03__play {
+  box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--neutral-0);
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.s03__play img {
+  display: block;
+  max-width: none;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* S04 대표원장 소개 — Figma 249:937                                  */
+/* ──────────────────────────────────────────────────────────── */
+.section-s04 {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--neutral-0);
+  display: flex;
+  align-items: center;
+  gap: 120px;
+  padding: 250px 260px 150px;
+}
+
+.s04__photo {
+  width: 580px;
+  height: 680px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--neutral-100);
+  flex-shrink: 0;
+}
+
+.s04__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.s04__content {
+  display: flex;
+  align-items: center;
+  gap: 117px;
+  flex-shrink: 0;
+}
+
+.s04__text {
+  position: relative;
+  width: 436px;
+  height: 500px;
+  flex-shrink: 0;
+}
+
+.s04__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.1px;
+  color: var(--primary-500);
+}
+
+.s04__title {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 436px;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+}
+
+.s04__title strong {
+  font-weight: 700;
+}
+
+.s04__credentials {
+  position: absolute;
+  top: 116px;
+  left: 0;
+  width: 381px;
+  margin: 0;
+  padding-left: 24px;
+  list-style: disc;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 2;
+  color: var(--neutral-800);
+}
+
+.s04__doctors {
+  position: relative;
+  width: 148px;
+  height: 119px;
+  flex-shrink: 0;
+}
+
+.s04__doctors-line {
+  position: absolute;
+  top: 11px;
+  left: 136px;
+  z-index: 0;
+  width: 1px;
+  height: 97px;
+  background: var(--neutral-300);
+}
+
+.s04__doctor {
+  position: absolute;
+  left: 0;
+  width: 148px;
+  margin: 0;
+  padding: 0;
+}
+
+.s04__doctors .s04__doctor:nth-child(2) {
+  top: 0;
+}
+
+.s04__doctors .s04__doctor:nth-child(3) {
+  top: 49px;
+}
+
+.s04__doctors .s04__doctor:nth-child(4) {
+  top: 97px;
+}
+
+.s04__doctor-dot {
+  position: absolute;
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neutral-300);
+}
+
+.s04__doctor-dot--active {
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  background: var(--neutral-0);
+  border: 2px solid var(--primary-500);
+  border-radius: 50%;
+}
+
+.s04__doctor-dot--active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--primary-500);
+  border-radius: 50%;
+}
+
+.s04__doctors .s04__doctor:nth-child(2) .s04__doctor-dot {
+  top: 0;
+  left: 132px;
+}
+
+.s04__doctors .s04__doctor:nth-child(2) .s04__doctor-dot--active {
+  left: 124px;
+}
+
+.s04__doctors .s04__doctor:nth-child(3) .s04__doctor-dot,
+.s04__doctors .s04__doctor:nth-child(4) .s04__doctor-dot {
+  top: 7px;
+  left: 132px;
+}
+
+.s04__doctor-name {
+  position: absolute;
+  right: 34px;
+  width: 114px;
+  margin: 0;
+  font: 700 14px/22px Pretendard, sans-serif;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.s04__doctor--active .s04__doctor-name {
+  color: var(--primary-500);
+}
+
+.s04__doctor:not(.s04__doctor--active) .s04__doctor-name {
+  color: var(--neutral-300);
+}
+
+.s04__doctors .s04__doctor:nth-child(2) .s04__doctor-name {
+  top: 1px;
+}
+
+.s04__doctors .s04__doctor:nth-child(3) .s04__doctor-name,
+.s04__doctors .s04__doctor:nth-child(4) .s04__doctor-name {
+  top: 0;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* S05 시흥동 통계 — Figma 249:998                                     */
+/* ──────────────────────────────────────────────────────────── */
+.section-s05 {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--neutral-0);
+  padding: 100px 0 200px;
+}
+
+.s05__container {
+  box-sizing: border-box;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.s05__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.s05__text {
+  width: 720px;
+  flex-shrink: 0;
+}
+
+.s05__title {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+}
+
+.s05__sub {
+  margin: 27px 0 0;
+  width: 720px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-800);
+}
+
+.s05__btn {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--neutral-900);
+  border-radius: 64px;
+  background: transparent;
+  color: var(--neutral-900);
+  text-decoration: none;
+}
+
+.s05__cards {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.s05-card {
+  box-sizing: border-box;
+  position: relative;
+  flex-shrink: 0;
+  width: 332px;
+  height: 320px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.s05-card--default {
+  background: var(--neutral-50);
+}
+
+.s05-card--accent {
+  background:
+    linear-gradient(226deg, rgba(255, 255, 255, 0.4) 0%, rgba(59, 137, 254, 0.4) 100%),
+    var(--primary-500);
+}
+
+.s05-card--primary {
+  background: var(--primary-50);
+}
+
+.s05-card__text {
+  position: absolute;
+  left: 32px;
+  top: 210px;
+  width: 156px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.s05-card__label {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.1px;
+  color: var(--neutral-900);
+}
+
+.s05-card--accent .s05-card__label {
+  color: var(--neutral-0);
+}
+
+.s05-card__value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.s05-card__num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 52px;
+  letter-spacing: -0.4px;
+  color: var(--primary-500);
+}
+
+.s05-card--accent .s05-card__num {
+  color: var(--neutral-0);
+}
+
+.s05-card__unit {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--primary-500);
+}
+
+.s05-card--accent .s05-card__unit {
+  color: var(--neutral-0);
+}
+
+.s05-card__icon {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  top: 12px;
+  left: 190px;
+  max-width: none;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* S06 자연치아 CTA — Figma 260:1127                                 */
+/* ──────────────────────────────────────────────────────────── */
+.section-s06 {
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 40px;
+  height: 557px;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #e4eaf3;
+}
+
+.s06__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.s06__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.s06__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    92deg,
+    rgba(31, 131, 224, 0.3) 18.546%,
+    rgba(255, 255, 255, 0) 64.039%
+  );
+  pointer-events: none;
+}
+
+.s06__content {
+  position: absolute;
+  z-index: 1;
+  top: 150px;
+  left: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.s06__text {
+  position: relative;
+  width: 735px;
+  height: 169px;
+  flex-shrink: 0;
+}
+
+.s06__title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 476px;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-0);
+}
+
+.s06__sub {
+  position: absolute;
+  top: 115px;
+  left: 0;
+  width: 735px;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-0);
+}
+
+.s06__btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--neutral-0);
+  border-radius: 64px;
+  background: transparent;
+  color: var(--neutral-0);
+  text-decoration: none;
+}
+
+
+.s01__btn,
+.s03__btn,
+.s05__btn,
+.s06__btn {
+  font: 600 15px/1 Pretendard, sans-serif;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* S07 오시는 길 — Figma 266:6806                                     */
+/* ──────────────────────────────────────────────────────────── */
+.section-s07 {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 200px 260px;
+  background: var(--neutral-0);
+}
+
+.s07__info {
+  position: relative;
+  width: 586px;
+  flex-shrink: 0;
+  min-height: 505px;
+}
+
+.s07__block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.s07__block--phone {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.s07__block--address {
+  position: absolute;
+  top: 119px;
+  left: 0;
+}
+
+.s07__block--parking {
+  position: absolute;
+  top: 217px;
+  left: 0;
+}
+
+.s07__block--hours {
+  position: absolute;
+  top: 342px;
+  left: 0;
+  width: 586px;
+  height: 163px;
+}
+
+.s07__label {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.24px;
+  color: var(--neutral-900);
+}
+
+.s07__phone {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+}
+
+.s07__text {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-900);
+}
+
+.s07__block--hours .s07__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.s07__hours {
+  position: absolute;
+  top: 39px;
+  left: 0;
+  border-collapse: collapse;
+}
+
+.s07__hours th {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 94px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.7;
+  text-align: left;
+  vertical-align: top;
+  white-space: pre;
+  color: var(--neutral-900);
+}
+
+.s07__hours td {
+  padding: 0;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  vertical-align: top;
+  color: var(--neutral-900);
+}
+
+.s07__map {
+  position: relative;
+  flex-shrink: 0;
+  width: 800px;
+  height: 520px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.s07__map-img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+  object-fit: cover;
+}
+
+.s07__map-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  height: auto;
+  pointer-events: none;
+  display: block;
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* 하단 CTA — Figma 266:177                                           */
+/* ──────────────────────────────────────────────────────────── */
+.section-cta {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 452px;
+  background: #5cbaf5;
+  overflow: hidden;
+}
+
+.cta__decor {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cta__decor img {
+  display: block;
+  max-width: none;
+}
+
+.cta__circle--left {
+  position: absolute;
+  width: 1106px;
+  height: 1092px;
+  left: -553px;
+  top: -672px;
+}
+
+.cta__circle--right {
+  position: absolute;
+  width: 1348px;
+  height: 1120px;
+  left: 1108px;
+  top: -67px;
+}
+
+.cta__q {
+  will-change: transform;
+}
+
+.cta__q--main {
+  position: absolute;
+  width: 264px;
+  height: 473px;
+  left: 1285px;
+  top: -89px;
+  --rotation: -4.68deg;
+  animation: float-main 6s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+  object-fit: cover;
+}
+
+.cta__q--small-l {
+  position: absolute;
+  width: 141.81px;
+  height: 200.39px;
+  left: 393px;
+  top: 178px;
+  --rotation: 5.34deg;
+  animation: float-small-l 5s ease-in-out infinite;
+  animation-delay: -1.5s;
+  filter: blur(1px);
+  opacity: 0.7;
+  object-fit: cover;
+}
+
+.cta__q--small-t {
+  position: absolute;
+  width: 68.22px;
+  height: 96.39px;
+  left: 628.56px;
+  top: 5.29px;
+  --rotation: -57.93deg;
+  animation: float-small-t 4s ease-in-out infinite;
+  animation-delay: -0.8s;
+  filter: blur(4px);
+  opacity: 0.7;
+  object-fit: cover;
+}
+
+.cta__content {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  z-index: 2;
+}
+
+.cta__title {
+  margin: 0;
+  width: 100%;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.96px;
+  text-align: center;
+  color: var(--neutral-0);
+}
+
+.cta__btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 32px;
+  border: none;
+  border-radius: 64px;
+  background: var(--neutral-900);
+  font: 500 18px/1.3 Pretendard, sans-serif;
+  letter-spacing: -0.09px;
+  color: var(--neutral-0);
+  text-decoration: none;
+}
+
+/* === 물음표 둥둥 떠다니는 효과 === */
+@keyframes float-main {
+  0%, 100% {
+    transform: rotate(var(--rotation)) translateY(0) translateX(0);
+  }
+  50% {
+    transform: rotate(calc(var(--rotation) + 2deg)) translateY(-20px) translateX(-8px);
+  }
+}
+
+@keyframes float-small-l {
+  0%, 100% {
+    transform: rotate(var(--rotation)) translateY(0);
+  }
+  50% {
+    transform: rotate(calc(var(--rotation) - 3deg)) translateY(-15px);
+  }
+}
+
+@keyframes float-small-t {
+  0%, 100% {
+    transform: rotate(var(--rotation)) translateY(0);
+  }
+  50% {
+    transform: rotate(calc(var(--rotation) + 4deg)) translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta__q--main,
+  .cta__q--small-l,
+  .cta__q--small-t {
+    animation: none;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* 플로팅 QUICK · TOP — S01 진입 시 노출 (main.js)                  */
+/* ──────────────────────────────────────────────────────────── */
+.fab-stack {
+  position: fixed;
+  inset-inline-end: max(24px, env(safe-area-inset-right));
+  inset-block-end: max(24px, env(safe-area-inset-bottom));
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.35s,
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.fab-stack.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.fab {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-full);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  color: var(--neutral-0);
+  font-family: 'Outfit', 'Pretendard', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  box-shadow: 0 4px 16px rgba(20, 24, 28, 0.18);
+}
+
+.fab__icon {
+  flex-shrink: 0;
+}
+
+.fab__label {
+  display: block;
+}
+
+.fab--quick {
+  background: var(--neutral-900);
+}
+
+.fab--quick:hover {
+  background: var(--neutral-800);
+}
+
+.fab--top {
+  background: var(--primary-500);
+}
+
+.fab--top:hover {
+  background: var(--primary-600);
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* 페이지 플레이스홀더 섹션                                        */
+/* ──────────────────────────────────────────────────────────── */
+.placeholder {
+  width: 100%;
+  min-height: 480px;
+  background: var(--neutral-50);
+  border-top: 1px dashed var(--neutral-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  color: var(--neutral-400);
+}
+
+.placeholder + .placeholder { border-top: 0; }
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* Footer — Figma 266:188                                             */
+/* ──────────────────────────────────────────────────────────── */
+.footer {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 353px;
+  background: var(--neutral-0);
+  padding: 0 260px;
+}
+
+.footer__container {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: var(--container);
+  height: 100%;
+  margin: 0 auto;
+}
+
+.footer__brand {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 600px;
+  height: 90px;
+}
+
+.footer__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 168px;
+  height: 30px;
+  object-fit: contain;
+  display: block;
+}
+
+.footer__info {
+  position: absolute;
+  top: 46px;
+  left: 0;
+  width: 600px;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--neutral-800);
+  white-space: pre-wrap;
+}
+
+.footer__links {
+  position: absolute;
+  top: 80px;
+  left: 923px;
+  width: 473px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.footer__links a {
+  flex-shrink: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--neutral-800);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer__divider {
+  position: absolute;
+  top: 210px;
+  left: 0;
+  width: 1400px;
+  max-width: 100%;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--neutral-200);
+}
+
+.footer__copyright {
+  position: absolute;
+  top: 231px;
+  left: 0;
+  width: 1400px;
+  max-width: 100%;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--neutral-800);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header.gnb,
+  .gnb__logo-img,
+  .fab-stack {
+    transition: none;
+  }
+
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .s02-marquee__track {
+    animation: none !important;
+    transform: none !important;
+    justify-content: center;
+    margin-inline: auto;
+    padding-inline: 40px;
+  }
+
+  .s02-marquee__track .s02-card:nth-child(n + 7) {
+    display: none !important;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* 반응형 — 1400 / 1024 / 768 / 480                              */
+/* ──────────────────────────────────────────────────────────── */
+@media (max-width: 1400px) {
+  .gnb__menu { gap: var(--space-40); }
+  .hero__title {
+    font-size: 64px;
+    letter-spacing: -1.28px;
+    line-height: 72px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .gnb__menu {
+    gap: var(--space-24);
+    font-size: 14px;
+  }
+  .gnb__inner {
+    padding: var(--space-16) 40px;
+  }
+  .hero__title {
+    font-size: 52px;
+    letter-spacing: -1.04px;
+    line-height: 58px;
+  }
+  .hero__subtitle { font-size: 15px; line-height: 24px; }
+
+  .placeholder { min-height: 360px; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gnb-height: 64px;
+  }
+
+  .gnb__inner {
+    justify-content: space-between;
+    gap: 0;
+    padding: var(--space-12) 40px;
+  }
+  .gnb__menu { display: none; }
+
+  .gnb__logo {
+    inline-size: 136px;
+    block-size: 24px;
+  }
+  .gnb__logo-img {
+    width: 136px;
+    height: 24px;
+  }
+
+  .btn--medium {
+    height: 44px;
+    padding: 0 var(--space-16);
+    font-size: 15px;
+    border-radius: 44px;
+  }
+
+  .hero {
+    min-height: min(1080px, 100dvh);
+  }
+
+  .hero__content {
+    /* 카드 변환 시 hero margin 만큼 left/right 보정 → 텍스트 viewport 고정 */
+    left: calc(40px - var(--hero-margin, 0px));
+    right: calc(40px - var(--hero-margin, 0px));
+    top: auto;
+    bottom: 120px;
+    width: auto;
+    max-width: calc(100vw - 80px);
+  }
+
+  .hero__title {
+    font-size: 42px;
+    letter-spacing: -0.84px;
+    line-height: 1.05;
+  }
+  .hero__subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: none;
+  }
+  .hero__subtitle br { display: none; }
+
+  .section-s03 {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 120px 48px;
+    gap: 40px;
+  }
+
+  .s03__left,
+  .s03__video {
+    width: 100%;
+    max-width: 660px;
+    margin-inline: auto;
+  }
+
+  .s03__text,
+  .s03__title,
+  .s03__body {
+    width: 100%;
+    max-width: 660px;
+  }
+
+  .s03__text {
+    height: auto;
+    min-height: 258px;
+    padding-bottom: var(--space-8);
+  }
+
+  .s03__title {
+    position: relative;
+    top: auto;
+    margin-top: 62px;
+  }
+
+  .s03__body {
+    position: relative;
+    top: auto;
+    margin-top: 28px;
+  }
+
+  .s03__quote {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .s03__video {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .fab {
+    width: 52px;
+    height: 52px;
+    font-size: 8px;
+  }
+  .fab__icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .placeholder { min-height: 280px; }
+}
+
+@media (max-width: 480px) {
+  .gnb__inner { padding: var(--space-12) var(--space-40); }
+
+  .container {
+    padding-inline: var(--space-24);
+  }
+
+  .hero__title {
+    font-size: 32px;
+    letter-spacing: -0.64px;
+    line-height: 1.1;
+  }
+}
