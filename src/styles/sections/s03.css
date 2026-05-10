@@ -1,0 +1,132 @@
+/* ──────────────────────────────────────────────────────────── */
+/* S03 스토리 — Figma 249:905                                   */
+/* ──────────────────────────────────────────────────────────── */
+.section-s03 {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 200px 260px;
+  overflow: hidden;
+}
+
+.s03__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.s03__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+
+.s03__left,
+.s03__video {
+  position: relative;
+  z-index: 1;
+  width: 660px;
+  flex-shrink: 0;
+}
+
+.s03__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.s03__text {
+  position: relative;
+  width: 660px;
+  height: 258px;
+}
+
+.s03__quote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 22px;
+  display: block;
+  transform: rotate(180deg);
+}
+
+.s03__title {
+  position: absolute;
+  top: 62px;
+  left: 0;
+  margin: 0;
+  width: 660px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-0);
+}
+
+.s03__body {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  margin: 0;
+  width: 660px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-0);
+}
+
+.s03__btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--neutral-0);
+  border-radius: 64px;
+  background: transparent;
+  color: var(--neutral-0);
+  text-decoration: none;
+}
+
+.s03__video {
+  height: 372px;
+  background: var(--neutral-800);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s03__play {
+  box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--neutral-0);
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.s03__play img {
+  display: block;
+  max-width: none;
+}

@@ -1,0 +1,198 @@
+/* ──────────────────────────────────────────────────────────── */
+/* S05 시흥동 통계 — Figma 249:998                               */
+/* ──────────────────────────────────────────────────────────── */
+.section-s05 {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--neutral-0);
+  padding: 100px 0 200px;
+}
+
+.s05__container {
+  box-sizing: border-box;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.s05__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.s05__text {
+  width: 720px;
+  flex-shrink: 0;
+}
+
+.s05__title {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+}
+
+.s05__sub {
+  margin: 27px 0 0;
+  width: 720px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-800);
+}
+
+.s05__btn {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--neutral-900);
+  border-radius: 64px;
+  background: transparent;
+  color: var(--neutral-900);
+  text-decoration: none;
+}
+
+.s05__cards {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.s05-card {
+  box-sizing: border-box;
+  position: relative;
+  flex-shrink: 0;
+  width: 332px;
+  height: 320px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.s05-card--default {
+  background: var(--neutral-50);
+}
+
+.s05-card--accent {
+  background:
+    linear-gradient(226deg, rgba(255, 255, 255, 0.4) 0%, rgba(59, 137, 254, 0.4) 100%),
+    var(--primary-500);
+}
+
+.s05-card--primary {
+  background: var(--primary-50);
+}
+
+.s05-card__text {
+  position: absolute;
+  left: 32px;
+  top: 210px;
+  width: 156px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.s05-card__label {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.1px;
+  color: var(--neutral-900);
+}
+
+.s05-card--accent .s05-card__label {
+  color: var(--neutral-0);
+}
+
+.s05-card__value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.s05-card__num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 52px;
+  letter-spacing: -0.4px;
+  color: var(--primary-500);
+}
+
+.s05-card--accent .s05-card__num {
+  color: var(--neutral-0);
+}
+
+.s05-card__unit {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--primary-500);
+}
+
+.s05-card--accent .s05-card__unit {
+  color: var(--neutral-0);
+}
+
+.s05-card__icon {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  top: 12px;
+  left: 190px;
+  max-width: none;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+
+/* ─── 반응형 ─── */
+@media (max-width: 1400px) {
+  .s05__container { padding: 0 80px; }
+  .s05-card { flex: 1; width: auto; min-width: 0; }
+}
+
+@media (max-width: 1024px) {
+  .section-s05 { padding: 80px 0 120px; }
+  .s05__container { padding: 0 40px; gap: 48px; }
+  .s05__header { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .s05__text { width: 100%; }
+  .s05__sub { width: 100%; margin-top: 16px; }
+  .s05__title { font-size: 32px; }
+  .s05__cards { flex-wrap: wrap; gap: 16px; }
+  .s05-card { flex: 0 0 calc((100% - 16px) / 2); width: calc((100% - 16px) / 2); height: 240px; }
+  .s05-card__text { left: 24px; top: 150px; }
+  .s05-card__num { font-size: 36px; line-height: 44px; }
+  .s05-card__icon { width: 100px; height: 100px; left: auto; right: 16px; top: 16px; }
+}
+
+@media (max-width: 768px) {
+  .section-s05 { padding: 64px 0 80px; }
+  .s05__container { padding: 0 24px; gap: 32px; }
+  .s05__title { font-size: 24px; }
+  .s05__sub { font-size: 14px; }
+  .s05-card { flex: 0 0 100%; width: 100%; height: 180px; }
+  .s05-card__text { left: 24px; top: 100px; }
+  .s05-card__num { font-size: 32px; line-height: 1.2; }
+  .s05-card__label { font-size: 16px; }
+  .s05-card__icon { width: 80px; height: 80px; right: 20px; top: 20px; }
+}
+
+@media (max-width: 480px) {
+  .s05__container { padding: 0 16px; }
+}

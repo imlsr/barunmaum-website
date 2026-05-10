@@ -1,0 +1,191 @@
+/* ──────────────────────────────────────────────────────────── */
+/* 전역 모션 감소 설정                                           */
+/* ──────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .site-header.gnb,
+  .gnb__logo-img,
+  .fab-stack {
+    transition: none;
+  }
+
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .s02-marquee__track {
+    animation: none !important;
+    transform: none !important;
+    justify-content: center;
+    margin-inline: auto;
+    padding-inline: 40px;
+  }
+
+  .s02-marquee__track .s02-card:nth-child(n + 7) {
+    display: none !important;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
+/* 반응형 — 1400 / 1024 / 768 / 480                            */
+/* ──────────────────────────────────────────────────────────── */
+@media (max-width: 1400px) {
+  .gnb__menu { gap: var(--space-40); }
+  .hero__title {
+    font-size: 64px;
+    letter-spacing: -1.28px;
+    line-height: 72px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .gnb__menu {
+    gap: var(--space-24);
+    font-size: 14px;
+  }
+  .gnb__inner {
+    padding: var(--space-16) 40px;
+  }
+  .hero__title {
+    font-size: 52px;
+    letter-spacing: -1.04px;
+    line-height: 58px;
+  }
+  .hero__subtitle { font-size: 15px; line-height: 24px; }
+
+  .placeholder { min-height: 360px; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gnb-height: 64px;
+  }
+
+  .gnb__inner {
+    justify-content: space-between;
+    gap: 0;
+    padding: var(--space-12) 40px;
+  }
+  .gnb__menu { display: none; }
+
+  .gnb__logo {
+    inline-size: 136px;
+    block-size: 24px;
+  }
+  .gnb__logo-img {
+    width: 136px;
+    height: 24px;
+  }
+
+  .btn--medium {
+    height: 44px;
+    padding: 0 var(--space-16);
+    font-size: 15px;
+    border-radius: 44px;
+  }
+
+  .hero {
+    min-height: min(1080px, 100dvh);
+  }
+
+  .hero__content {
+    /* 카드 변환 시 hero margin 만큼 left/right 보정 → 텍스트 viewport 고정 */
+    left: calc(40px - var(--hero-margin, 0px));
+    right: calc(40px - var(--hero-margin, 0px));
+    top: auto;
+    bottom: 120px;
+    width: auto;
+    max-width: calc(100vw - 80px);
+  }
+
+  .hero__title {
+    font-size: 42px;
+    letter-spacing: -0.84px;
+    line-height: 1.05;
+  }
+  .hero__subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: none;
+  }
+  .hero__subtitle br { display: none; }
+
+  .section-s03 {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 120px 48px;
+    gap: 40px;
+  }
+
+  .s03__left,
+  .s03__video {
+    width: 100%;
+    max-width: 660px;
+    margin-inline: auto;
+  }
+
+  .s03__text,
+  .s03__title,
+  .s03__body {
+    width: 100%;
+    max-width: 660px;
+  }
+
+  .s03__text {
+    height: auto;
+    min-height: 258px;
+    padding-bottom: var(--space-8);
+  }
+
+  .s03__title {
+    position: relative;
+    top: auto;
+    margin-top: 62px;
+  }
+
+  .s03__body {
+    position: relative;
+    top: auto;
+    margin-top: 28px;
+  }
+
+  .s03__quote {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .s03__video {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .fab {
+    width: 52px;
+    height: 52px;
+    font-size: 8px;
+  }
+  .fab__icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .placeholder { min-height: 280px; }
+}
+
+@media (max-width: 480px) {
+  .gnb__inner { padding: var(--space-12) var(--space-40); }
+
+  .container {
+    padding-inline: var(--space-24);
+  }
+
+  .hero__title {
+    font-size: 32px;
+    letter-spacing: -0.64px;
+    line-height: 1.1;
+  }
+}

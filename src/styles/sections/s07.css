@@ -1,0 +1,204 @@
+/* ──────────────────────────────────────────────────────────── */
+/* S07 오시는 길 — Figma 266:6806                               */
+/* ──────────────────────────────────────────────────────────── */
+.section-s07 {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 200px 260px;
+  background: var(--neutral-0);
+}
+
+.s07__info {
+  position: relative;
+  width: 586px;
+  flex-shrink: 0;
+  min-height: 505px;
+}
+
+.s07__block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.s07__block--phone {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.s07__block--address {
+  position: absolute;
+  top: 119px;
+  left: 0;
+}
+
+.s07__block--parking {
+  position: absolute;
+  top: 217px;
+  left: 0;
+}
+
+.s07__block--hours {
+  position: absolute;
+  top: 342px;
+  left: 0;
+  width: 586px;
+  height: 163px;
+}
+
+.s07__label {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.24px;
+  color: var(--neutral-900);
+}
+
+.s07__phone {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+}
+
+.s07__text {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-900);
+}
+
+.s07__block--hours .s07__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.s07__hours {
+  position: absolute;
+  top: 39px;
+  left: 0;
+  border-collapse: collapse;
+}
+
+.s07__hours th {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 94px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.7;
+  text-align: left;
+  vertical-align: top;
+  white-space: pre;
+  color: var(--neutral-900);
+}
+
+.s07__hours td {
+  padding: 0;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  vertical-align: top;
+  color: var(--neutral-900);
+}
+
+.s07__map {
+  position: relative;
+  flex-shrink: 0;
+  width: 800px;
+  height: 520px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.s07__map-img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+  object-fit: cover;
+}
+
+.s07__map-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  height: auto;
+  pointer-events: none;
+  display: block;
+}
+
+
+/* ─── 반응형 ─── */
+@media (max-width: 1400px) {
+  .section-s07 { padding: 160px 80px; gap: 32px; }
+  .s07__info { width: 460px; }
+  .s07__map { flex: 1; width: auto; }
+  .s07__block--hours { width: 460px; }
+}
+
+@media (max-width: 1024px) {
+  .section-s07 {
+    flex-direction: column;
+    padding: 100px 40px;
+    gap: 48px;
+  }
+  .s07__info { width: 100%; min-height: auto; }
+  .s07__block,
+  .s07__block--phone,
+  .s07__block--address,
+  .s07__block--parking,
+  .s07__block--hours {
+    position: relative;
+    top: auto; left: auto;
+    width: 100%;
+    height: auto;
+    margin-bottom: 32px;
+  }
+  .s07__block--hours .s07__label { position: relative; top: auto; margin-bottom: 16px; }
+  .s07__hours { position: relative; top: auto; }
+  .s07__map { width: 100%; max-width: 800px; height: auto; aspect-ratio: 16 / 10; }
+}
+
+@media (max-width: 768px) {
+  .section-s07 { padding: 64px 24px; gap: 40px; }
+  .s07__phone { font-size: 32px; }
+  .s07__label { font-size: 20px; }
+  .s07__text { font-size: 16px; }
+  .s07__hours th,
+  .s07__hours td { font-size: 16px; }
+  .s07__hours th { width: 84px; }
+  .s07__map-marker { width: 130px; }
+}
+
+@media (max-width: 480px) {
+  .section-s07 { padding: 56px 16px; }
+  .s07__phone { font-size: 28px; }
+  .s07__label { font-size: 18px; }
+  .s07__text { font-size: 15px; }
+  .s07__hours th,
+  .s07__hours td { font-size: 14px; }
+  .s07__hours th { width: 72px; }
+  .s07__map-marker { width: 110px; }
+}

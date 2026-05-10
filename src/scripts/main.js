@@ -78,7 +78,7 @@ var revealObserver = new IntersectionObserver(
   }
 );
 
-document.querySelectorAll('.reveal, .reveal-stagger').forEach(function (el) {
+document.querySelectorAll('.reveal, .reveal-stagger, .reveal-card').forEach(function (el) {
   revealObserver.observe(el);
 });
 

@@ -1,0 +1,80 @@
+/* ──────────────────────────────────────────────────────────── */
+/* Hero — 비디오 배경 풀스크린 (Figma 411:60)                    */
+/* ──────────────────────────────────────────────────────────── */
+.hero {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 0;
+  width: calc(100% - (2 * var(--hero-margin, 0px)));
+  height: 100vh;
+  min-height: 1080px;
+  margin-left: var(--hero-margin, 0px);
+  margin-right: var(--hero-margin, 0px);
+  overflow: hidden;
+  border-radius: var(--hero-radius, 0px);
+  background: #000;
+  transition-property: margin-left, margin-right, border-radius;
+  transition-duration: 0.05s;
+  transition-timing-function: linear;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+.hero__content {
+  position: absolute;
+  /* hero 가 카드로 변환되며 margin-left 가 0→40px 늘어나도
+     텍스트는 viewport 기준 같은 위치를 유지하도록 좌측 보정 */
+  left: calc(260px - var(--hero-margin, 0px));
+  top: 560px;
+  z-index: 2;
+  transform: none;
+  transition: none;
+  opacity: 1;
+  will-change: auto;
+}
+
+.hero__title {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 80px;
+  letter-spacing: -1.44px;
+  color: #ffffff;
+}
+
+.hero__subtitle {
+  margin: 30px 0 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: rgba(255, 255, 255, 0.85);
+}

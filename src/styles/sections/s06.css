@@ -1,0 +1,146 @@
+/* ──────────────────────────────────────────────────────────── */
+/* S06 자연치아 CTA — Figma 260:1127                             */
+/* ──────────────────────────────────────────────────────────── */
+.section-s06 {
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 40px;
+  height: 557px;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #e4eaf3;
+}
+
+.s06__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.s06__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.s06__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    92deg,
+    rgba(31, 131, 224, 0.3) 18.546%,
+    rgba(255, 255, 255, 0) 64.039%
+  );
+  pointer-events: none;
+}
+
+.s06__content {
+  position: absolute;
+  z-index: 1;
+  top: 150px;
+  left: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.s06__text {
+  position: relative;
+  width: 735px;
+  height: 169px;
+  flex-shrink: 0;
+}
+
+.s06__title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 476px;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-0);
+}
+
+.s06__sub {
+  position: absolute;
+  top: 115px;
+  left: 0;
+  width: 735px;
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-0);
+}
+
+.s06__btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--neutral-0);
+  border-radius: 64px;
+  background: transparent;
+  color: var(--neutral-0);
+  text-decoration: none;
+}
+
+
+.s01__btn,
+.s03__btn,
+.s05__btn,
+.s06__btn {
+  font: 600 15px/1 Pretendard, sans-serif;
+}
+
+
+/* ─── 반응형 ─── */
+@media (max-width: 1400px) {
+  .section-s06 { margin: 0 24px; }
+  .s06__content { left: 80px; top: 100px; gap: 32px; }
+  .s06__text { width: 100%; max-width: 720px; }
+  .s06__title,
+  .s06__sub { width: 100%; max-width: 720px; }
+}
+
+@media (max-width: 1024px) {
+  .section-s06 { height: auto; min-height: 480px; }
+  .s06__bg-img { object-position: center; }
+  .s06__content {
+    position: relative;
+    top: auto; left: auto;
+    padding: 80px 48px;
+    gap: 28px;
+  }
+  .s06__text { width: 100%; height: auto; max-width: none; }
+  .s06__title { position: relative; width: 100%; font-size: 32px; }
+  .s06__sub { position: relative; top: auto; width: 100%; max-width: none; margin-top: 20px; font-size: 16px; }
+}
+
+@media (max-width: 768px) {
+  .section-s06 { margin: 0 16px; min-height: 420px; }
+  .s06__content { padding: 56px 28px; gap: 24px; }
+  .s06__title { font-size: 24px; }
+  .s06__sub { font-size: 14px; margin-top: 16px; }
+  .s06__sub br { display: none; }
+}
+
+@media (max-width: 480px) {
+  .section-s06 { margin: 0 8px; border-radius: 24px; }
+  .s06__content { padding: 40px 20px; }
+  .s06__title { font-size: 22px; }
+}

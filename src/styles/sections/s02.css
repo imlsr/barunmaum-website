@@ -1,0 +1,201 @@
+/* ──────────────────────────────────────────────────────────── */
+/* S02 진료 — Figma 411:79 · 무한 마키                           */
+/* ──────────────────────────────────────────────────────────── */
+.section-s02 {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--neutral-0);
+  padding: 250px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 가로 무한 슬라이드는 클립, 세로(카드 호버 떠오름)는 자유롭게 */
+  overflow-x: clip;
+}
+
+.s02-header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.s02-title {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+  text-align: center;
+}
+
+.s02-sub {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--neutral-800);
+  text-align: center;
+}
+
+.s02-marquee {
+  position: relative;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.s02-marquee__viewport {
+  /* overflow-x: clip → 가로는 가려서 무한 슬라이드 잘림 유지
+     overflow-y: visible → 세로는 풀어서 호버 시 위로 떠오르는 카드가 안 잘림
+     (참고: overflow-x:hidden + overflow-y:visible 조합은 spec 상 visible 이
+     auto 로 변환되어 작동 안 함. clip 을 써야 의도대로 작동) */
+  overflow-x: clip;
+  overflow-y: visible;
+  width: 100%;
+  /* 호버 translateY(-20px) + 그림자 여유 위로 24px 확보 */
+  padding-top: 24px;
+}
+
+.s02-marquee__track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 24px;
+  width: max-content;
+  animation: s02-marquee-scroll 40s linear infinite;
+}
+
+/* 호버해도 마키 흐름은 계속 — 정지 X */
+
+@keyframes s02-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-6 * (332px + 24px)));
+  }
+}
+
+/* 양옆 흰색 페이드 제거 — HTML 의 .s02-marquee__fade 요소는 남아있지만
+   CSS 미지정 + display:none 으로 시각적으로 완전히 비활성화 */
+.s02-marquee__fade {
+  display: none;
+}
+
+.s02-card {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 332px;
+  height: 376px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  /* 호버 시 살짝 떠오름. 마키는 .s02-marquee__track(부모) 의 translateX 라
+     자식 카드의 transform 과 축이 달라 합성에 충돌 없음 */
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s02-card:hover {
+  transform: translateY(-20px);
+}
+
+.s02-card__media {
+  width: 332px;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
+
+.s02-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* 카드 호버 시 썸네일 이미지만 확대 (컨테이너 overflow: hidden 으로 클립) */
+.s02-card:hover .s02-card__media img {
+  transform: scale(1.08);
+}
+
+.s02-card--bg1 .s02-card__media {
+  background: #e1e4f0;
+}
+
+.s02-card--bg2 .s02-card__media {
+  background: #dde2ed;
+}
+
+.s02-card--bg3 .s02-card__media {
+  background: linear-gradient(180deg, #efeff7 0%, #e2e3ed 100%);
+}
+
+.s02-card--bg4 .s02-card__media {
+  background: linear-gradient(180deg, #e6e7ee 0%, #dee0e9 100%);
+}
+
+.s02-card--bg5 .s02-card__media {
+  background: transparent;
+}
+
+.s02-card--bg6 .s02-card__media {
+  background: #dedee6;
+}
+
+.s02-card__title {
+  margin: 16px 0 0;
+  font: 700 24px/1.3 Pretendard, sans-serif;
+  letter-spacing: -0.24px;
+  color: var(--neutral-900);
+  width: 100%;
+}
+
+.s02-card__desc {
+  margin: 5px 0 0;
+  font: 400 16px/1.3 Pretendard, sans-serif;
+  color: var(--neutral-800);
+  width: 269px;
+}
+
+
+/* ─── 반응형 ─── */
+@media (max-width: 1400px) {
+  .section-s02 { padding: 200px 0; }
+}
+
+@media (max-width: 1024px) {
+  .section-s02 { padding: 120px 0; }
+  .s02-header { padding: 0 40px; }
+  .s02-title { font-size: 32px; }
+  .s02-sub { font-size: 16px; }
+  .s02-marquee { margin-top: 56px; }
+}
+
+@media (max-width: 768px) {
+  .section-s02 { padding: 80px 0; }
+  .s02-header { padding: 0 24px; gap: 16px; }
+  .s02-title { font-size: 24px; }
+  .s02-sub { font-size: 14px; }
+  .s02-marquee { margin-top: 40px; }
+  .s02-card__title { font-size: 20px; }
+  .s02-card__desc { font-size: 14px; width: auto; }
+}
+
+@media (max-width: 480px) {
+  .section-s02 { padding: 64px 0; }
+  .s02-title { font-size: 22px; }
+}

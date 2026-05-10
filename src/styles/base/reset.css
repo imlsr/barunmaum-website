@@ -1,0 +1,39 @@
+/* ──────────────────────────────────────────────────────────── */
+/* Reset                                                        */
+/* ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  block-size: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  background: var(--neutral-0);
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui,
+               'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--neutral-900);
+  background: var(--neutral-0);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-block-size: 100%;
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+main {
+  max-inline-size: 100%;
+}
