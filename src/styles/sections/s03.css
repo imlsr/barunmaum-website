@@ -130,3 +130,9 @@
   display: block;
   max-width: none;
 }
+
+
+/* ─── 반응형 ─── */
+@media (max-width: 1559px) {
+  .section-s03 { padding: 200px 80px; }
+}

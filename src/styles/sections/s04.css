@@ -198,7 +198,7 @@
 
 
 /* ─── 반응형 ─── */
-@media (max-width: 1400px) {
+@media (max-width: 1559px) {
   .section-s04 { padding: 200px 80px 120px; gap: 60px; }
   .s04__content { gap: 60px; }
   .s04__photo { width: 480px; height: auto; aspect-ratio: 580 / 680; }

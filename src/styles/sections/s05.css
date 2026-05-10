@@ -162,7 +162,7 @@
 
 
 /* ─── 반응형 ─── */
-@media (max-width: 1400px) {
+@media (max-width: 1559px) {
   .s05__container { padding: 0 80px; }
   .s05-card { flex: 1; width: auto; min-width: 0; }
 }

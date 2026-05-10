@@ -109,7 +109,7 @@
 
 
 /* ─── 반응형 ─── */
-@media (max-width: 1400px) {
+@media (max-width: 1559px) {
   .section-s06 { margin: 0 24px; }
   .s06__content { left: 80px; top: 100px; gap: 32px; }
   .s06__text { width: 100%; max-width: 720px; }

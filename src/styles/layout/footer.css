@@ -102,7 +102,7 @@
 
 
 /* ─── 반응형 ─── */
-@media (max-width: 1400px) {
+@media (max-width: 1559px) {
   .footer { padding: 0 80px; }
   .footer__links { left: auto; right: 0; }
 }

@@ -151,7 +151,7 @@
 
 
 /* ─── 반응형 ─── */
-@media (max-width: 1400px) {
+@media (max-width: 1559px) {
   .section-s07 { padding: 160px 80px; gap: 32px; }
   .s07__info { width: 460px; }
   .s07__map { flex: 1; width: auto; }

@@ -165,7 +165,7 @@
 
 
 /* ─── 반응형 ─── */
-@media (max-width: 1400px) {
+@media (max-width: 1559px) {
   .cta__content { width: 90%; max-width: 800px; left: 50%; transform: translateX(-50%); }
 }
 
