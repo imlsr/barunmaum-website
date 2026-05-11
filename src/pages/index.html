@@ -400,10 +400,10 @@
       </div>
     </section>
 
-    <!-- S04 대표원장 소개 — Figma 249:937 -->
+    <!-- S04 대표원장 소개 — Figma 249:937 · 탭 전환 -->
     <section class="section-s04" aria-labelledby="s04-heading">
-      <div class="s04__photo reveal">
-        <img src="https://www.figma.com/api/mcp/asset/cbe096d5-26cb-4e34-b11e-de8c517b64f8"
+      <div class="s04-img reveal">
+        <img src="../../public/images/doctors/doctor_01.jpg"
              alt="김성재 대표원장"
              width="580"
              height="680"
@@ -411,41 +411,40 @@
              decoding="async" />
       </div>
 
-      <div class="s04__content reveal">
-        <div class="s04__text">
-          <p class="s04__label">통합치의학과 전문의</p>
-          <h2 class="s04__title" id="s04-heading"><strong>김성재</strong> 대표원장</h2>
-          <ul class="s04__credentials">
-            <li>보건복지부인증 통합치의학과 전문의</li>
-            <li>경희대학교 치과대학병원 외래교수</li>
-            <li>경희대학교 치의학전문대학원 졸업</li>
-            <li>경희대학교 치의학대학원 박사 수료 (치과보존학 전공)</li>
-            <li>미국 HAVARD MEDICAL SCHOOL CME</li>
-            <li>세계 임플란트학회(ICOI) 정회원</li>
-            <li>세계 임플란트학회(ICOI) 정회원</li>
-            <li>미국 치과임플란트학회(AAID) 정회원</li>
-            <li>미국 심미치과학회(AACD) 정회원</li>
-            <li>대한 구강악안면 임플란트학회 정회원</li>
-            <li>대한 치과보존학회 정회원</li>
-            <li>대한 턱관절교합학회 정회원</li>
-          </ul>
-        </div>
+      <div class="s04-content reveal">
+        <p class="s04-specialty">통합치의학과 전문의</p>
+        <h2 class="s04-name" id="s04-heading"><strong>김성재 </strong><span>대표원장</span></h2>
+        <ul class="s04-credentials">
+          <li>보건복지부인증 통합치의학과 전문의</li>
+          <li>경희대학교 치과대학병원 외래교수</li>
+          <li>경희대학교 치의학전문대학원 졸업</li>
+          <li>경희대학교 치의학대학원 박사 수료 (치과보존학 전공)</li>
+          <li>미국 HARVARD MEDICAL SCHOOL CME</li>
+          <li>세계 임플란트학회(ICOI) 정회원</li>
+          <li>미국 치과임플란트학회(AAID) 정회원</li>
+          <li>미국 심미치과학회(AACD) 정회원</li>
+          <li>대한 구강악안면 임플란트학회 정회원</li>
+          <li>대한 치과보존학회 정회원</li>
+          <li>대한 턱관절교합학회 정회원</li>
+        </ul>
+      </div>
 
-        <div class="s04__doctors">
-          <div class="s04__doctors-line" aria-hidden="true"></div>
-          <div class="s04__doctor s04__doctor--active">
-            <span class="s04__doctor-dot s04__doctor-dot--active"></span>
-            <span class="s04__doctor-name">김성재 대표원장</span>
-          </div>
-          <div class="s04__doctor">
-            <span class="s04__doctor-dot"></span>
-            <span class="s04__doctor-name">이세한 원장</span>
-          </div>
-          <div class="s04__doctor">
-            <span class="s04__doctor-dot"></span>
-            <span class="s04__doctor-name">양승원 원장</span>
-          </div>
-        </div>
+      <div class="s04-tabs" role="tablist" aria-label="대표원장 선택">
+        <div class="s04-tab-line" aria-hidden="true"></div>
+        <div class="s04-tab-marker" aria-hidden="true"></div>
+
+        <button class="s04-tab is-active" type="button" role="tab" data-index="0" aria-selected="true">
+          <span class="s04-tab-name">김성재 대표원장</span>
+          <span class="s04-tab-dot" aria-hidden="true"></span>
+        </button>
+        <button class="s04-tab" type="button" role="tab" data-index="1" aria-selected="false">
+          <span class="s04-tab-name">이세한 원장</span>
+          <span class="s04-tab-dot" aria-hidden="true"></span>
+        </button>
+        <button class="s04-tab" type="button" role="tab" data-index="2" aria-selected="false">
+          <span class="s04-tab-name">양승원 원장</span>
+          <span class="s04-tab-dot" aria-hidden="true"></span>
+        </button>
       </div>
     </section>
 

@@ -196,3 +196,144 @@ document.querySelectorAll('.reveal, .reveal-stagger, .reveal-card').forEach(func
   window.addEventListener('load', alignMegaCols);
   window.addEventListener('resize', alignMegaCols, { passive: true });
 })();
+
+
+// === S04 대표원장 탭 전환 ===
+(function () {
+  var doctors = [
+    {
+      id: 'kimsj',
+      name: '김성재',
+      title: '대표원장',
+      specialty: '통합치의학과 전문의',
+      image: '../../public/images/doctors/doctor_01.jpg',
+      credentials: [
+        '보건복지부인증 통합치의학과 전문의',
+        '경희대학교 치과대학병원 외래교수',
+        '경희대학교 치의학전문대학원 졸업',
+        '경희대학교 치의학대학원 박사 수료 (치과보존학 전공)',
+        '미국 HARVARD MEDICAL SCHOOL CME',
+        '세계 임플란트학회(ICOI) 정회원',
+        '미국 치과임플란트학회(AAID) 정회원',
+        '미국 심미치과학회(AACD) 정회원',
+        '대한 구강악안면 임플란트학회 정회원',
+        '대한 치과보존학회 정회원',
+        '대한 턱관절교합학회 정회원',
+      ],
+    },
+    {
+      id: 'leesh',
+      name: '이세한',
+      title: '원장',
+      specialty: '치과보철과 전문의',
+      image: '../../public/images/doctors/doctor_02.jpg',
+      credentials: [
+        '보건복지부인증 치과보철과 전문의',
+        '보건복지부인증 통합치의학과 전문의',
+        '하버드대학교 Implant & Prosthodontics 과정 수료',
+        '조선대치과병원 치과보철과 인턴 및 레지던트 수료',
+        '조선대학교 치의학 박사 과정',
+        '대한치과보철학회 정회원 및 인정의',
+        '대한구강악안면임플란트학회 정회원',
+        'Dentalbean implant course 수료',
+        '2018 International Association for Dental Research 학술발표',
+        '대한턱관절교합학회지 논문 등재',
+        '전) 가이드본치과 원장',
+      ],
+    },
+    {
+      id: 'yangsw',
+      name: '양승원',
+      title: '원장',
+      specialty: '치과보철과 전문의',
+      image: '../../public/images/doctors/doctor_03.jpg',
+      credentials: [
+        '보건복지부인증 치과보철과 전문의',
+        '보건복지부인증 통합치의학과 전문의',
+        '연세대학교 치의학과 졸업',
+        '연세대학교 치의학과 석사',
+        '연세대학교 치의학과 박사',
+        '연세대학교 치과대학병원 인턴 수료',
+        '연세대학교 치과대학병원 보철과 레지던트 수료',
+        '대한치과보철학회 정회원 및 인정의',
+        '전) 연세대학교 치과대학병원 외래교수',
+      ],
+    },
+  ];
+
+  var tabs = document.querySelectorAll('.s04-tab');
+  if (!tabs.length) return;
+
+  var marker = document.querySelector('.s04-tab-marker');
+  var imgWrap = document.querySelector('.s04-img');
+  var img = imgWrap && imgWrap.querySelector('img');
+  var content = document.querySelector('.s04-content');
+  if (!marker || !img || !content) return;
+
+  var specialtyEl = content.querySelector('.s04-specialty');
+  var nameEl = content.querySelector('.s04-name');
+  var credentialsEl = content.querySelector('.s04-credentials');
+
+  var fadeTimer = null;
+  var currentIdx = -1;
+
+  img.addEventListener('error', function () {
+    console.warn(
+      '[S04] 대표원장 이미지를 찾을 수 없습니다: ' + img.src +
+      '\n→ public/images/doctors/ 폴더에 doctor_01.jpg / doctor_02.jpg / doctor_03.jpg 파일을 추가하세요.'
+    );
+  });
+
+  function applyContent(doctor) {
+    img.src = doctor.image;
+    img.alt = doctor.name + ' ' + doctor.title;
+    specialtyEl.textContent = doctor.specialty;
+    nameEl.innerHTML = '<strong>' + doctor.name + ' </strong><span>' + doctor.title + '</span>';
+    credentialsEl.innerHTML = doctor.credentials
+      .map(function (c) { return '<li>' + c + '</li>'; })
+      .join('');
+  }
+
+  function activate(idx) {
+    if (idx === currentIdx) return;
+    var doctor = doctors[idx];
+    if (!doctor) return;
+
+    if (fadeTimer) { clearTimeout(fadeTimer); fadeTimer = null; }
+
+    tabs.forEach(function (t, i) {
+      var isActive = i === idx;
+      t.classList.toggle('is-active', isActive);
+      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    marker.style.transform = 'translateY(' + (idx * 48) + 'px)';
+
+    if (currentIdx === -1) {
+      applyContent(doctor);
+      currentIdx = idx;
+      return;
+    }
+
+    imgWrap.classList.add('is-fading');
+    content.classList.add('is-fading');
+
+    fadeTimer = setTimeout(function () {
+      applyContent(doctor);
+      imgWrap.classList.remove('is-fading');
+      content.classList.remove('is-fading');
+      fadeTimer = null;
+    }, 200);
+
+    currentIdx = idx;
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var idx = parseInt(tab.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) activate(idx);
+    });
+  });
+
+  activate(0);
+})();
