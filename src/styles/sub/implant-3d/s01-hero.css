@@ -27,6 +27,14 @@
   pointer-events: none;
   border-radius: 24px;
   overflow: hidden;
+  /* 진입 인터랙션: 가운데에서 양옆으로 펼쳐짐 */
+  clip-path: inset(0 50% 0 50% round 24px);
+  transition: clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: clip-path;
+}
+
+.implant-i3d-hero__card.is-revealed .implant-i3d-hero__bg {
+  clip-path: inset(0 0 0 0 round 24px);
 }
 
 .implant-i3d-hero__bg-img {
@@ -62,6 +70,17 @@
   letter-spacing: -0.96px;
   margin: 0;
   width: 100%;
+  /* 진입: 위에서 아래로 슬라이드 인 (배경 펼침 직후) */
+  opacity: 0;
+  transform: translateY(-40px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+}
+
+.implant-i3d-hero__card.is-revealed .implant-i3d-hero__title {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .implant-i3d-hero__lead {
@@ -71,6 +90,31 @@
   line-height: 1.5;
   margin: 0;
   max-width: 505px;
+  /* 진입: 아래에서 위로 슬라이드 인 (타이틀보다 살짝 늦게) */
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 0.7s,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.7s;
+}
+
+.implant-i3d-hero__card.is-revealed .implant-i3d-hero__lead {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 모션 감소 선호 사용자: 즉시 표시 */
+@media (prefers-reduced-motion: reduce) {
+  .implant-i3d-hero__bg {
+    clip-path: inset(0 0 0 0 round 24px) !important;
+    transition: none;
+  }
+  .implant-i3d-hero__title,
+  .implant-i3d-hero__lead {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
 }
 
 @media (max-width: 768px) {

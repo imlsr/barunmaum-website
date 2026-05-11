@@ -186,3 +186,24 @@ var revealObserver = new IntersectionObserver(
 document.querySelectorAll(".reveal, .reveal-stagger, .reveal-card").forEach(function (el) {
   revealObserver.observe(el);
 });
+
+// === S01 Hero 진입 인터랙션 — 페이지 로드 직후 자동 트리거 ===
+// 카드 배경: 가운데에서 양옆으로 펼침 (clip-path)
+// 타이틀: 위에서 아래로 슬라이드 인
+// 설명(lead): 아래에서 위로 슬라이드 인
+(function () {
+  function initHeroReveal() {
+    var heroCard = document.querySelector(".implant-i3d-hero__card");
+    if (!heroCard) return;
+    // 살짝 딜레이 → 첫 페인트 후 트리거(자연스러움)
+    setTimeout(function () {
+      heroCard.classList.add("is-revealed");
+    }, 200);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeroReveal);
+  } else {
+    initHeroReveal();
+  }
+})();
