@@ -1,0 +1,139 @@
+/* Figma 467:314 CTA */
+
+.implant-i3d-cta {
+  position: relative;
+  background: #5cbaf5;
+  min-height: 452px;
+  overflow: hidden;
+}
+
+.implant-i3d-cta__decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.implant-i3d-cta__blob {
+  position: absolute;
+  display: block;
+}
+
+.implant-i3d-cta__blob--l {
+  left: -553px;
+  top: -672px;
+  width: 1106px;
+  height: 1092px;
+}
+
+.implant-i3d-cta__blob--r {
+  left: 1108px;
+  top: -67px;
+  width: 1348px;
+  height: 1120px;
+}
+
+.implant-i3d-cta__blob img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.implant-i3d-cta__q-lg {
+  position: absolute;
+  left: 1285px;
+  top: -89px;
+  width: 302px;
+  height: 493px;
+  transform: rotate(-4.68deg);
+  z-index: 1;
+}
+
+.implant-i3d-cta__q-lg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
+
+.implant-i3d-cta__q-sm-a {
+  position: absolute;
+  left: 393px;
+  top: 178px;
+  width: 160px;
+  height: 213px;
+  transform: rotate(5.34deg);
+  filter: blur(1px);
+  z-index: 1;
+}
+
+.implant-i3d-cta__q-sm-b {
+  position: absolute;
+  left: 628px;
+  top: 5px;
+  width: 118px;
+  height: 109px;
+  transform: rotate(-57.93deg);
+  filter: blur(4px);
+  z-index: 1;
+}
+
+.implant-i3d-cta__q-sm-a img,
+.implant-i3d-cta__q-sm-b img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.implant-i3d-cta__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+}
+
+.implant-i3d-cta__title {
+  margin: 0;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: -0.96px;
+  color: var(--neutral-0);
+}
+
+.implant-i3d-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  padding: 0 32px;
+  border-radius: 64px;
+  border: 1px solid var(--neutral-0);
+  background: transparent;
+  font-family: Pretendard, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.09px;
+  color: var(--neutral-0);
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .implant-i3d-cta__q-lg {
+    display: none;
+  }
+
+  .implant-i3d-cta__title {
+    font-size: 32px;
+  }
+}

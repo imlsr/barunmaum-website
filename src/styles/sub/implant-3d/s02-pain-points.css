@@ -1,0 +1,112 @@
+/* Figma 48:58 S02_PainPoints */
+
+.implant-i3d-s02 {
+  background: var(--neutral-0);
+  padding: 150px var(--side-padding);
+}
+
+.implant-i3d-s02__inner {
+  max-width: 1400px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.implant-i3d-s02__copy {
+  flex: 0 0 660px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.implant-i3d-s02__head {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.implant-i3d-s02__title {
+  margin: 0;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+}
+
+.implant-i3d-s02__desc {
+  margin: 0;
+  font-family: Pretendard, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--neutral-800);
+  max-width: 700px;
+}
+
+.implant-i3d-s02__bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.implant-i3d-s02__pill {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  padding: 0 20px;
+  background: var(--neutral-50);
+  border-radius: 80px;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.implant-i3d-s02__pill-text {
+  margin: 0;
+  font-family: Pretendard, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.1px;
+  color: var(--neutral-900);
+  white-space: nowrap;
+}
+
+.implant-i3d-s02__video {
+  position: relative;
+  flex: 0 0 660px;
+  max-width: 100%;
+  width: 660px;
+  height: 372px;
+  background: var(--neutral-800);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+  .implant-i3d-s02__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .implant-i3d-s02__copy {
+    flex: 1 1 auto;
+  }
+
+  .implant-i3d-s02__video {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .implant-i3d-s02__pill-text {
+    white-space: normal;
+  }
+}

@@ -1,0 +1,77 @@
+/* 서브페이지 공통 · GNB Type A 고정 · main 인터랙션 없음 */
+
+body.is-subpage {
+  background: var(--neutral-0);
+}
+
+body.is-subpage .site-header.gnb.gnb--overlay {
+  background: var(--neutral-0);
+  border-block-end: 1px solid var(--neutral-100);
+  color: var(--neutral-700);
+}
+
+body.is-subpage .gnb__menu {
+  color: var(--neutral-700);
+}
+
+body.is-subpage .gnb__logo-img--light {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.is-subpage .gnb__logo-img--dark {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.is-subpage .site-header.gnb {
+  transition: none;
+}
+
+.implant-i3d {
+  padding-top: var(--gnb-height);
+}
+
+.implant-i3d__step-pill {
+  display: inline-flex;
+  align-items: flex-start;
+  padding: 4px 16px;
+  border-radius: var(--radius-full);
+  background: var(--primary-500);
+  font-family: Outfit, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: normal;
+  color: var(--primary-50);
+  white-space: nowrap;
+}
+
+.implant-i3d__check {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.implant-i3d__play {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.implant-i3d__play-ring {
+  position: absolute;
+  inset: 0;
+  width: 120px;
+  height: 120px;
+}
+
+.implant-i3d__play-tri {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 34px;
+  transform: translate(calc(-50% + 1px), -50%);
+}

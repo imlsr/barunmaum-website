@@ -1,0 +1,20 @@
+/* 3D 디지털 임플란트 서브페이지 — 진입점 (메인 main.css 미사용) */
+@import url("./base/tokens.css");
+@import url("./base/reset.css");
+@import url("./base/utilities.css");
+@import url("./layout/gnb.css");
+@import url("./layout/footer.css");
+@import url("./base/responsive.css");
+
+@import url("./sub/implant-3d/shell.css");
+@import url("./sub/implant-3d/s01-hero.css");
+@import url("./sub/implant-3d/s02-pain-points.css");
+@import url("./sub/implant-3d/s03-what-is-digital.css");
+@import url("./sub/implant-3d/s04-principles.css");
+@import url("./sub/implant-3d/s05-process.css");
+@import url("./sub/implant-3d/s06-warranty.css");
+@import url("./sub/implant-3d/s07-director.css");
+@import url("./sub/implant-3d/s08-equipment.css");
+@import url("./sub/implant-3d/s09-checklist.css");
+@import url("./sub/implant-3d/s10-faq.css");
+@import url("./sub/implant-3d/s11-cta.css");

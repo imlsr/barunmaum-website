@@ -1,0 +1,137 @@
+/* Figma 467:332 S07_Director — 1840×672 · radius 40 */
+
+.implant-i3d-s07 {
+  padding: 0 40px 0;
+}
+
+.implant-i3d-s07__card {
+  position: relative;
+  max-width: 1840px;
+  margin-inline: auto;
+  min-height: 672px;
+  border-radius: 40px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.implant-i3d-s07__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 40px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #78b8ff 0%, #7bb6fa 58.65%, #f6fcff 100%);
+}
+
+.implant-i3d-s07__bg-photo {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  object-fit: cover;
+  object-position: center bottom;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  pointer-events: none;
+}
+
+.implant-i3d-s07__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 80px;
+  padding: 0 220px;
+  min-height: 672px;
+  box-sizing: border-box;
+}
+
+.implant-i3d-s07__quote-wrap {
+  position: relative;
+  flex: 0 0 660px;
+}
+
+.implant-i3d-s07__quote-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.implant-i3d-s07__title {
+  margin: 62px 0 18px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-0);
+}
+
+.implant-i3d-s07__body {
+  margin: 0 0 40px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--neutral-0);
+}
+
+.implant-i3d-s07__body p {
+  margin: 0 0 0.25em;
+}
+
+.implant-i3d-s07__body p:last-child {
+  margin-bottom: 0;
+}
+
+.implant-i3d-s07__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 30px;
+  border-radius: 64px;
+  border: 1px solid var(--neutral-0);
+  background: transparent;
+  font-family: Pretendard, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--neutral-0);
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.implant-i3d-s07__video {
+  position: relative;
+  flex: 0 0 660px;
+  width: 660px;
+  height: 372px;
+  margin-left: auto;
+  background: var(--neutral-800);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+  .implant-i3d-s07__inner {
+    flex-direction: column;
+    padding: 48px 32px;
+    align-items: stretch;
+  }
+
+  .implant-i3d-s07__quote-wrap,
+  .implant-i3d-s07__video {
+    flex: 1 1 auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}

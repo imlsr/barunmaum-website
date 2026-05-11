@@ -1,0 +1,212 @@
+/* Figma 54:3 S04_Principles */
+
+.implant-i3d-s04 {
+  background: var(--neutral-0);
+  padding: 150px var(--side-padding);
+  box-sizing: border-box;
+}
+
+.implant-i3d-s04__head {
+  max-width: 800px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.implant-i3d-s04__title {
+  margin: 0 0 20px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: var(--neutral-900);
+}
+
+.implant-i3d-s04__lead {
+  margin: 0;
+  font-family: Pretendard, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--neutral-800);
+}
+
+.implant-i3d-s04__body {
+  position: relative;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+.implant-i3d-s04__timeline {
+  position: absolute;
+  left: 648px;
+  top: 0;
+  width: 24px;
+  height: 2280px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.implant-i3d-s04__timeline-img {
+  display: block;
+  width: 24px;
+  height: 2280px;
+  object-fit: fill;
+}
+
+.implant-i3d-s04__list {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.implant-i3d-s04__row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 160px;
+}
+
+.implant-i3d-s04__figure {
+  position: relative;
+  flex: 0 0 580px;
+  width: 580px;
+  height: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.implant-i3d-s04__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.implant-i3d-s04__figure--vod::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.implant-i3d-s04__vod-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.implant-i3d-s04__vod-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.implant-i3d-s04__content {
+  flex: 0 0 660px;
+  width: 660px;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+.implant-i3d-s04__block-title {
+  margin: 0 0 40px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.4;
+  letter-spacing: -0.96px;
+  color: var(--neutral-900);
+}
+
+.implant-i3d-s04__block-title--p1 {
+  margin-top: 94px;
+}
+
+.implant-i3d-s04__block-title--p234 {
+  margin-top: 134px;
+}
+
+.implant-i3d-s04__pill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.implant-i3d-s04__pill {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 64px;
+  padding: 16px 20px;
+  background: var(--neutral-50);
+  border-radius: 80px;
+  box-sizing: border-box;
+}
+
+.implant-i3d-s04__pill-text {
+  margin: 0;
+  font-family: Pretendard, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.1px;
+  color: var(--neutral-900);
+  white-space: nowrap;
+}
+
+.implant-i3d-s04__split-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  min-height: 64px;
+  padding: 16px 20px;
+  background: var(--neutral-50);
+  border-radius: 80px;
+  box-sizing: border-box;
+}
+
+.implant-i3d-s04__split-cell {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .implant-i3d-s04__timeline {
+    display: none;
+  }
+
+  .implant-i3d-s04__row {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .implant-i3d-s04__figure,
+  .implant-i3d-s04__content {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .implant-i3d-s04__split-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .implant-i3d-s04__pill-text {
+    white-space: normal;
+  }
+
+  .implant-i3d-s04__block-title--p1,
+  .implant-i3d-s04__block-title--p234 {
+    margin-top: 0;
+  }
+}
