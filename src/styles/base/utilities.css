@@ -167,10 +167,6 @@
   display: block;
 }
 
-/* QUICK — neutral/900 배경 + 별 + 라벨 */
-.fab--quick { background: var(--neutral-900); }
-.fab--quick:hover { background: var(--neutral-800); }
-
 /* TOP — primary/500 배경 + 화살표만 (라벨 없음) */
 .fab--top { background: var(--primary-500); }
 .fab--top:hover { background: var(--primary-600); }
