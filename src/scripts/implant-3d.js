@@ -102,3 +102,57 @@
   window.addEventListener("load", alignMegaCols);
   window.addEventListener("resize", alignMegaCols, { passive: true });
 })();
+
+// === TOP 플로팅 + Scroll Reveal — main.js와 동일 (서브는 #s01 없을 때 스크롤 500px 기준 표시) ===
+(function () {
+  var s01 = document.getElementById("s01");
+  var fabStack = document.getElementById("fab-stack");
+  var fabTop = fabStack && fabStack.querySelector(".fab--top");
+
+  function updateFabVisibility() {
+    if (!fabStack) return;
+    var visible;
+    if (s01) {
+      var top = s01.getBoundingClientRect().top;
+      visible = top < window.innerHeight * 0.92;
+    } else {
+      var y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      visible = y >= 500;
+    }
+    fabStack.classList.toggle("is-visible", visible);
+    fabStack.setAttribute("aria-hidden", visible ? "false" : "true");
+  }
+
+  window.addEventListener("scroll", updateFabVisibility, { passive: true });
+  window.addEventListener("resize", updateFabVisibility, { passive: true });
+  updateFabVisibility();
+
+  if (fabTop) {
+    fabTop.addEventListener("click", function () {
+      if (window.lenis) {
+        window.lenis.scrollTo(0);
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  }
+})();
+
+var revealObserver = new IntersectionObserver(
+  function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.15,
+    rootMargin: "0px 0px -80px 0px",
+  }
+);
+
+document.querySelectorAll(".reveal, .reveal-stagger, .reveal-card").forEach(function (el) {
+  revealObserver.observe(el);
+});

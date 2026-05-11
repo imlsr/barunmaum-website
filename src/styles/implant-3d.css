@@ -3,6 +3,8 @@
 @import url("./base/reset.css");
 @import url("./base/utilities.css");
 @import url("./layout/gnb.css");
+/* 공통 섹션 — 메인과 동일한 CSS 재사용 */
+@import url("./sections/cta.css");
 @import url("./layout/footer.css");
 @import url("./base/responsive.css");
 
