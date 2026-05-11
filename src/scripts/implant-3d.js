@@ -1,5 +1,25 @@
-// 서브페이지: GNB 메가메뉴만 (main.js 미로드 · Lenis 없음)
-// — main.js의 스크롤·hero-compact 토글 없음. 흰 배경(Type A)은 HTML의 body.hero-compact + 아래 보강.
+// === Lenis — main.js 와 동일. 뷰포트 768px 이하에서는 비활성(네이티브 스크롤) ===
+if (typeof Lenis !== "undefined" && window.innerWidth > 768) {
+  var lenis = new Lenis({
+    duration: 1.2,
+    easing: function (t) {
+      return Math.min(1, 1.001 - Math.pow(2, -10 * t));
+    },
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 2,
+  });
+  window.lenis = lenis;
+
+  function lenisRaf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(lenisRaf);
+  }
+  requestAnimationFrame(lenisRaf);
+}
+
+// 서브페이지: body hero-compact 고정
+// — 흰 배경(Type A)은 HTML 의 body.hero-compact + 아래 보강.
 
 (function () {
   var body = document.body;
@@ -103,11 +123,18 @@
   window.addEventListener("resize", alignMegaCols, { passive: true });
 })();
 
-// === TOP 플로팅 + Scroll Reveal — main.js와 동일 (서브는 #s01 없을 때 스크롤 500px 기준 표시) ===
+// === TOP 플로팅 — main.js 패턴 + 서브는 #s01 없을 때 스크롤 500px 기준, Lenis 연동 ===
 (function () {
   var s01 = document.getElementById("s01");
   var fabStack = document.getElementById("fab-stack");
   var fabTop = fabStack && fabStack.querySelector(".fab--top");
+
+  function getScrollTop() {
+    if (window.lenis && typeof window.lenis.scroll === "number") {
+      return window.lenis.scroll;
+    }
+    return window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
 
   function updateFabVisibility() {
     if (!fabStack) return;
@@ -116,8 +143,7 @@
       var top = s01.getBoundingClientRect().top;
       visible = top < window.innerHeight * 0.92;
     } else {
-      var y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      visible = y >= 500;
+      visible = getScrollTop() >= 500;
     }
     fabStack.classList.toggle("is-visible", visible);
     fabStack.setAttribute("aria-hidden", visible ? "false" : "true");
@@ -125,6 +151,9 @@
 
   window.addEventListener("scroll", updateFabVisibility, { passive: true });
   window.addEventListener("resize", updateFabVisibility, { passive: true });
+  if (window.lenis) {
+    window.lenis.on("scroll", updateFabVisibility);
+  }
   updateFabVisibility();
 
   if (fabTop) {
@@ -138,6 +167,7 @@
   }
 })();
 
+// === Scroll Reveal — main.js 와 동일 ( .reveal · .reveal-stagger · .reveal-card )
 var revealObserver = new IntersectionObserver(
   function (entries) {
     entries.forEach(function (entry) {

@@ -1,0 +1,8 @@
+/* Lenis 활성 시 레이아웃 점프 방지 */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
