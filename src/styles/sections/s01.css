@@ -31,6 +31,15 @@
   gap: 28px;
 }
 
+/* Eyebrow — 타이틀 위 작은 영문 문구
+   부모 .section-s01__text-block flex gap 28 + margin 12 → 시각 간격 40 */
+.s01__eyebrow {
+  margin: 0 0 12px;
+  font: 600 20px/28px 'Outfit', sans-serif;
+  letter-spacing: -0.1px;
+  color: var(--primary-500);
+}
+
 .s01__title {
   margin: 0;
   width: 476px;
