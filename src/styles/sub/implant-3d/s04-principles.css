@@ -37,21 +37,17 @@
   margin-inline: auto;
 }
 
+/* 중앙 세로 라인 — 4 원칙 카드를 잇는 1px 연한 회색 라인.
+   gap(160px) 중앙(= body left + 660px)에 위치. */
 .implant-i3d-s04__timeline {
   position: absolute;
-  left: 648px;
+  left: 660px;
   top: 0;
-  width: 24px;
-  height: 2280px;
+  width: 1px;
+  height: 100%;
+  background: var(--neutral-200);
   pointer-events: none;
   z-index: 1;
-}
-
-.implant-i3d-s04__timeline-img {
-  display: block;
-  width: 24px;
-  height: 2280px;
-  object-fit: fill;
 }
 
 .implant-i3d-s04__list {
@@ -61,10 +57,28 @@
 }
 
 .implant-i3d-s04__row {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   gap: 160px;
+}
+
+/* 라인 위 점 마커 — gap 중앙(= row left + 660px), 행 세로 중앙.
+   파란 원 + 흰 보더로 라인과 자연스럽게 분리. */
+.implant-i3d-s04__row::before {
+  content: "";
+  position: absolute;
+  left: 660px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary-500);
+  border: 3px solid var(--neutral-0);
+  box-sizing: border-box;
+  z-index: 2;
 }
 
 .implant-i3d-s04__figure {
@@ -181,6 +195,10 @@
 
 @media (max-width: 1200px) {
   .implant-i3d-s04__timeline {
+    display: none;
+  }
+
+  .implant-i3d-s04__row::before {
     display: none;
   }
 
