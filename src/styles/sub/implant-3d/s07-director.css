@@ -20,19 +20,10 @@
   pointer-events: none;
   border-radius: 40px;
   overflow: hidden;
-  background: linear-gradient(180deg, #78b8ff 0%, #7bb6fa 58.65%, #f6fcff 100%);
-}
-
-.implant-i3d-s07__bg-photo {
-  position: absolute;
-  inset: 0;
-  opacity: 0.2;
-  object-fit: cover;
-  object-position: center bottom;
-  width: 100%;
-  height: 100%;
-  border-radius: 40px;
-  pointer-events: none;
+  background-image: url("../../../../public/images/implant-3d/s07_bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .implant-i3d-s07__inner {
