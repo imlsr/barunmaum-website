@@ -337,3 +337,104 @@ document.querySelectorAll('.reveal, .reveal-stagger, .reveal-card').forEach(func
 
   activate(0);
 })();
+
+
+// === S05 카드 등장 + 슬롯머신 카운트업 (one-shot) ===
+(function () {
+  var cards = document.querySelector('.s05__cards');
+  if (!cards) return;
+
+  // 1) 카드 등장 — IntersectionObserver
+  if (typeof IntersectionObserver !== 'undefined') {
+    var obs = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            cards.classList.add('is-revealed');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '0px 0px -10% 0px' }
+    );
+    obs.observe(cards);
+  } else {
+    cards.classList.add('is-revealed');
+  }
+
+  // 2) 슬롯머신 카운트업
+  var counters = document.querySelectorAll('.s05-card__num');
+  if (!counters.length) return;
+
+  var s05 = document.querySelector('.section-s05');
+  if (!s05) return;
+
+  function format(value, decimals, useComma) {
+    var f = value.toFixed(decimals);
+    if (useComma) {
+      var parts = f.split('.');
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      f = parts.join('.');
+    }
+    return f;
+  }
+
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion) {
+    counters.forEach(function (el) {
+      var target = parseFloat(el.dataset.target);
+      var decimals = parseInt(el.dataset.decimals || '0', 10);
+      el.textContent = format(target, decimals, target >= 1000);
+    });
+    return;
+  }
+
+  function animateCounter(el) {
+    var target = parseFloat(el.dataset.target);
+    var decimals = parseInt(el.dataset.decimals || '0', 10);
+    var duration = parseInt(el.dataset.duration || '2000', 10);
+    var useComma = target >= 1000;
+    var startTime = performance.now();
+    var SHUFFLE_PHASE = 0.7;
+    var magnitude = Math.pow(10, Math.floor(Math.log10(target || 1)) + 1);
+
+    function update(now) {
+      var elapsed = now - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var displayValue;
+
+      if (progress < SHUFFLE_PHASE) {
+        displayValue = Math.random() * magnitude;
+      } else {
+        var settle = (progress - SHUFFLE_PHASE) / (1 - SHUFFLE_PHASE);
+        var eased = 1 - Math.pow(1 - settle, 3);
+        displayValue = target * eased;
+      }
+      el.textContent = format(displayValue, decimals, useComma);
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = format(target, decimals, useComma);
+      }
+    }
+    requestAnimationFrame(update);
+  }
+
+  var countObs = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          counters.forEach(function (counter, i) {
+            setTimeout(function () { animateCounter(counter); }, i * 150);
+          });
+          countObs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3, rootMargin: '0px 0px -10% 0px' }
+  );
+  countObs.observe(s05);
+})();
