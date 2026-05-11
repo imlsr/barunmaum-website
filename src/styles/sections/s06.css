@@ -2,18 +2,32 @@
 /* S06 자연치아 CTA — Figma 260:1127                             */
 /* ──────────────────────────────────────────────────────────── */
 .section-s06 {
+  /* 스크롤 expand 인터랙션 — JS 가 width / border-radius 동적 설정
+     START: width 60% + radius 40 / END: width 95% (max-width 1840) + radius 40 */
   box-sizing: border-box;
   position: relative;
-  margin: 0 40px;
+  margin: 0 auto;
+  width: 60%;
+  max-width: 1840px;
   height: 557px;
   border-radius: 40px;
   overflow: hidden;
   background: #e4eaf3;
+  transition:
+    width 0.2s linear,
+    border-radius 0.2s linear;
+  will-change: width, border-radius;
 }
 
+/* 배경 이미지는 카드 width 와 무관하게 풀와이드(1840) 고정 + 카드 가운데 정렬
+   카드의 overflow: hidden 이 마스크 역할 → 카드 작으면 이미지 가운데 일부만 보임 */
 .s06__bg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1840px;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
 }
@@ -132,7 +146,14 @@
 }
 
 @media (max-width: 768px) {
-  .section-s06 { margin: 0 16px; min-height: 420px; }
+  /* expand 인터랙션 비활성화 — width/transition 초기화 */
+  .section-s06 {
+    margin: 0 16px;
+    width: auto;
+    border-radius: 16px;
+    transition: none;
+    min-height: 420px;
+  }
   .s06__content { padding: 56px 28px; gap: 24px; }
   .s06__title { font-size: 24px; }
   .s06__sub { font-size: 14px; margin-top: 16px; }

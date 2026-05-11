@@ -438,3 +438,64 @@ document.querySelectorAll('.reveal, .reveal-stagger, .reveal-card').forEach(func
   );
   countObs.observe(s05);
 })();
+
+
+// === S06 자연치아 CTA — 스크롤 진입 시 카드 줌인 펼침 ===
+// START: width 60% + border-radius 40
+// END:   width 95% + border-radius 40  (max-width 1840 으로 카드형 정착)
+(function () {
+  var card = document.querySelector('.section-s06');
+  if (!card) return;
+  if (window.innerWidth <= 768) return;
+
+  var START_WIDTH_PERCENT = 60;
+  var END_WIDTH_PERCENT = 95;
+  var END_MAX_WIDTH = 1840;
+  var START_RADIUS = 40;
+  var END_RADIUS = 40;
+
+  function updateS06() {
+    if (window.innerWidth <= 768) return;
+
+    var rect = card.getBoundingClientRect();
+    var windowH = window.innerHeight;
+
+    var enterPoint = windowH;
+    var exitPoint = windowH * 0.3;
+
+    var progress = (enterPoint - rect.top) / (enterPoint - exitPoint);
+    progress = Math.max(0, Math.min(1, progress));
+
+    var eased = 1 - Math.pow(1 - progress, 3);
+
+    var widthPct = START_WIDTH_PERCENT + (END_WIDTH_PERCENT - START_WIDTH_PERCENT) * eased;
+    var radius = START_RADIUS + (END_RADIUS - START_RADIUS) * eased;
+
+    card.style.width = widthPct + '%';
+    card.style.maxWidth = END_MAX_WIDTH + 'px';
+    card.style.borderRadius = radius + 'px';
+  }
+
+  updateS06();
+
+  if (typeof window.lenis !== 'undefined' && window.lenis) {
+    window.lenis.on('scroll', updateS06);
+  } else {
+    var ticking = false;
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (!ticking) {
+          requestAnimationFrame(function () {
+            updateS06();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+  }
+
+  window.addEventListener('resize', updateS06, { passive: true });
+})();
