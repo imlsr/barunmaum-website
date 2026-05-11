@@ -1,4 +1,47 @@
 /* ──────────────────────────────────────────────────────────── */
+/* 커스텀 커서 — S02 마키 호버 시 마우스 따라다님                  */
+/* ──────────────────────────────────────────────────────────── */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(63, 159, 219, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-0);
+  font: 600 16px/1 'Outfit', sans-serif;
+  letter-spacing: 0.5px;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease;
+  will-change: transform, opacity;
+}
+
+.custom-cursor.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.s02-marquee:hover { cursor: none; }
+.s02-marquee:hover * { cursor: none; }
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor { display: none !important; }
+  .s02-marquee:hover,
+  .s02-marquee:hover * { cursor: pointer; }
+}
+
+
+/* ──────────────────────────────────────────────────────────── */
 /* S02 진료 — Figma 411:79 · 무한 마키                           */
 /* ──────────────────────────────────────────────────────────── */
 .section-s02 {

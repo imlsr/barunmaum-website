@@ -499,3 +499,41 @@ document.querySelectorAll('.reveal, .reveal-stagger, .reveal-card').forEach(func
 
   window.addEventListener('resize', updateS06, { passive: true });
 })();
+
+
+// === 커스텀 커서 — S02 마키 호버 시 마우스 따라다님 + "VIEW" ===
+(function () {
+  if (window.matchMedia && window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
+  var cursor = document.querySelector('.custom-cursor');
+  var marquee = document.querySelector('.s02-marquee');
+  if (!cursor || !marquee) return;
+
+  var mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0, rafId = null;
+
+  document.addEventListener('mousemove', function (e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (rafId === null) rafId = requestAnimationFrame(animate);
+  }, { passive: true });
+
+  function animate() {
+    cursorX += (mouseX - cursorX) * 0.2;
+    cursorY += (mouseY - cursorY) * 0.2;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+
+    if (Math.abs(mouseX - cursorX) < 0.5 && Math.abs(mouseY - cursorY) < 0.5) {
+      rafId = null;
+    } else {
+      rafId = requestAnimationFrame(animate);
+    }
+  }
+
+  marquee.addEventListener('mouseenter', function () {
+    cursor.classList.add('is-visible');
+  });
+  marquee.addEventListener('mouseleave', function () {
+    cursor.classList.remove('is-visible');
+  });
+})();
