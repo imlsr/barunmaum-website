@@ -79,7 +79,7 @@ body.hero-compact .gnb__logo-img--light {
   align-items: center;
   gap: 80px;
   height: 100%;
-  font-family: 'Pretendard', sans-serif;
+  font-family: "Pretendard", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.3;
@@ -89,7 +89,9 @@ body.hero-compact .gnb__logo-img--light {
 
 .gnb__cta {
   justify-self: end;
-  font: 600 15px/1 Pretendard, sans-serif;
+  font:
+    600 15px/1 Pretendard,
+    sans-serif;
   cursor: pointer;
   transition:
     background-color 0.3s ease,
@@ -102,7 +104,6 @@ body.hero-compact .gnb__logo-img--light {
   color: var(--neutral-0);
   border-color: var(--neutral-900);
 }
-
 
 /* ============================================================ */
 /* GNB 메뉴 항목 + 메가 메뉴                                      */
@@ -135,13 +136,14 @@ body.hero-compact .gnb__logo-img--light {
 
 /* 호버 또는 활성 시 텍스트 색 변경 (두 타입 공통) */
 .gnb__menu-item:hover .gnb__menu-link,
+.gnb__menu-item.is-active .gnb__menu-link,
 .gnb__menu-link.is-active {
   color: var(--gnb-text-hover);
 }
 
 /* 호버/활성 시 3px 파란 밑줄 — bottom -15 (메뉴 텍스트 아래 + GNB 하단 근처) */
 .gnb__menu-link::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
@@ -154,10 +156,10 @@ body.hero-compact .gnb__logo-img--light {
 }
 
 .gnb__menu-item:hover .gnb__menu-link::after,
+.gnb__menu-item.is-active .gnb__menu-link::after,
 .gnb__menu-link.is-active::after {
   opacity: 1;
 }
-
 
 /* 메가메뉴 — 풀와이드 패널 (GNB 상태에 따라 색상 따라감) */
 .gnb__megamenu {
@@ -166,7 +168,7 @@ body.hero-compact .gnb__logo-img--light {
   left: 0;
   right: 0;
   height: var(--gnb-megamenu-height);
-  background: transparent;                  /* 기본 투명 (Hero 위) */
+  background: transparent; /* 기본 투명 (Hero 위) */
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -216,8 +218,10 @@ body.hero-compact .gnb__megamenu {
 }
 
 .gnb__mega-col a {
-  font: 300 15px/1.3 Pretendard, sans-serif;   /* Light 300 + 15px */
-  color: var(--neutral-0);                /* 기본(투명 GNB): 흰 텍스트 */
+  font:
+    300 15px/1.3 Pretendard,
+    sans-serif; /* Light 300 + 15px */
+  color: var(--neutral-0); /* 기본(투명 GNB): 흰 텍스트 */
   text-decoration: none;
   white-space: nowrap;
   transition: color 0.2s ease;
@@ -238,5 +242,7 @@ body.hero-compact .gnb__mega-col a:hover {
 
 /* 768 이하: 메가메뉴 숨김 (모바일 햄버거는 추후) */
 @media (max-width: 768px) {
-  .gnb__megamenu { display: none; }
+  .gnb__megamenu {
+    display: none;
+  }
 }

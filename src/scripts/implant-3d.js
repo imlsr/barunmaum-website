@@ -1,4 +1,14 @@
 // 서브페이지: GNB 메가메뉴만 (main.js 미로드 · Lenis 없음)
+// — main.js의 스크롤·hero-compact 토글 없음. 흰 배경(Type A)은 HTML의 body.hero-compact + 아래 보강.
+
+(function () {
+  var body = document.body;
+  if (body && body.classList.contains("is-subpage")) {
+    body.classList.add("hero-compact");
+    var header = document.querySelector(".gnb");
+    if (header) header.classList.add("is-scrolled");
+  }
+})();
 
 (function () {
   var gnb = document.querySelector(".gnb");
@@ -9,23 +19,33 @@
 
   var hideTimer = null;
 
+  var megaCols = document.querySelectorAll(".gnb__mega-col");
+
+  function syncActiveMenus(activeKey) {
+    menuItems.forEach(function (item) {
+      var key = item.dataset.menu;
+      var on =
+        typeof activeKey !== "undefined" &&
+        activeKey !== null &&
+        activeKey !== "" &&
+        key === activeKey;
+      item.classList.toggle("is-active", on);
+      var link = item.querySelector(".gnb__menu-link");
+      if (link) link.classList.toggle("is-active", on);
+    });
+  }
+
   function open(activeKey) {
     megamenu.classList.add("is-open");
     alignMegaCols();
     megamenu.setAttribute("aria-hidden", "false");
-    menuLinks.forEach(function (link) {
-      var item = link.closest(".gnb__menu-item");
-      var key = item && item.dataset.menu;
-      link.classList.toggle("is-active", key === activeKey);
-    });
+    syncActiveMenus(activeKey);
   }
 
   function close() {
     megamenu.classList.remove("is-open");
     megamenu.setAttribute("aria-hidden", "true");
-    menuLinks.forEach(function (link) {
-      link.classList.remove("is-active");
-    });
+    syncActiveMenus(undefined);
   }
 
   menuItems.forEach(function (item) {
@@ -35,6 +55,17 @@
         hideTimer = null;
       }
       open(item.dataset.menu);
+    });
+  });
+
+  megaCols.forEach(function (col) {
+    col.addEventListener("mouseenter", function () {
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+      var ck = col.dataset.col;
+      if (ck) open(ck);
     });
   });
 
@@ -48,8 +79,6 @@
   gnb.addEventListener("mouseleave", function () {
     hideTimer = setTimeout(close, 120);
   });
-
-  var megaCols = document.querySelectorAll(".gnb__mega-col");
 
   function alignMegaCols() {
     if (!megamenu) return;
