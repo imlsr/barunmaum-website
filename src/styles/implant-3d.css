@@ -1,12 +1,11 @@
 /* 3D 디지털 임플란트 서브페이지 — 진입점 (메인 main.css 미사용) */
+/* 공통 스택 순서는 main.css 와 동일: base → layout(gnb, footer) → 공유 section(cta) → 페이지 전용 → responsive */
 @import url("./base/tokens.css");
 @import url("./base/reset.css");
 @import url("./base/utilities.css");
 @import url("./layout/gnb.css");
-/* 공통 섹션 — 메인과 동일한 CSS 재사용 */
-@import url("./sections/cta.css");
 @import url("./layout/footer.css");
-@import url("./base/responsive.css");
+@import url("./sections/cta.css");
 
 @import url("./sub/implant-3d/shell.css");
 @import url("./sub/implant-3d/s01-hero.css");
@@ -19,4 +18,5 @@
 @import url("./sub/implant-3d/s08-equipment.css");
 @import url("./sub/implant-3d/s09-checklist.css");
 @import url("./sub/implant-3d/s10-faq.css");
-@import url("./sub/implant-3d/s11-cta.css");
+
+@import url("./base/responsive.css");
