@@ -3,12 +3,13 @@
 /* ──────────────────────────────────────────────────────────── */
 .section-s06 {
   /* 스크롤 expand 인터랙션 — JS 가 width / border-radius 동적 설정
-     START: width 60% + radius 40 / END: width 95% (max-width 1840) + radius 40 */
+     START: width 60% + radius 40 / END: calc(100% - 80px) (양끝 40px 마진) + radius 40
+     wide monitor 에서도 카드는 항상 좌우 40px 띄운 풀와이드 */
   box-sizing: border-box;
   position: relative;
   margin: 0 auto;
   width: 60%;
-  max-width: 1840px;
+  max-width: none;
   height: 557px;
   border-radius: 40px;
   overflow: hidden;
