@@ -2,14 +2,14 @@
 /* S06 자연치아 CTA — Figma 260:1127                             */
 /* ──────────────────────────────────────────────────────────── */
 .section-s06 {
-  /* 스크롤 expand 인터랙션 — JS 가 width / border-radius 동적 설정
-     START: width 60% + radius 40 / END: calc(100% - 80px) (양끝 40px 마진) + radius 40
-     wide monitor 에서도 카드는 항상 좌우 40px 띄운 풀와이드 */
+  /* 스크롤 expand 인터랙션 — JS 가 width (60%→100%) 동적 설정.
+     끝상태 폭은 max-width 캡으로 결정 → S05 카드 그리드와 좌우 끝 정확히 일치.
+     max-width 값은 S05 .s05__container 의 (max-width − padding*2) 와 매칭. */
   box-sizing: border-box;
   position: relative;
   margin: 0 auto;
   width: 60%;
-  max-width: none;
+  max-width: 1400px;
   height: 557px;
   border-radius: 40px;
   overflow: hidden;
@@ -135,8 +135,10 @@
 
 
 /* ─── 반응형 ─── */
+/* 모든 BP 에서 S05 .s05__container 의 (max-width − padding*2) 와 동일한 폭으로 캡.
+   margin: 0 auto 와 결합 → S05 카드와 좌·우 끝 일치. */
 @media (max-width: 1559px) {
-  .section-s06 { margin: 0 24px; }
+  .section-s06 { max-width: min(1240px, calc(100% - 160px)); }
   .s06__content { left: 80px; top: 100px; gap: 32px; }
   .s06__text { width: 100%; max-width: 720px; }
   .s06__title,
@@ -144,7 +146,7 @@
 }
 
 @media (max-width: 1024px) {
-  .section-s06 { height: auto; min-height: 480px; }
+  .section-s06 { max-width: calc(100% - 80px); height: auto; min-height: 480px; }
   .s06__bg-img { object-position: center; }
   .s06__content {
     position: relative;
@@ -158,10 +160,10 @@
 }
 
 @media (max-width: 768px) {
-  /* expand 인터랙션 비활성화 — width/transition 초기화 */
+  /* expand 인터랙션 비활성화 — width 100% + max-width 캡으로 정렬 유지 */
   .section-s06 {
-    margin: 0 16px;
-    width: auto;
+    width: 100%;
+    max-width: calc(100% - 48px);
     border-radius: 16px;
     transition: none;
     min-height: 420px;
@@ -173,7 +175,7 @@
 }
 
 @media (max-width: 480px) {
-  .section-s06 { margin: 0 8px; border-radius: 24px; }
+  .section-s06 { max-width: calc(100% - 32px); border-radius: 24px; }
   .s06__content { padding: 40px 20px; }
   .s06__title { font-size: 22px; }
 }

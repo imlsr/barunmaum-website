@@ -464,9 +464,9 @@ document.querySelectorAll(".reveal, .reveal-stagger, .reveal-card").forEach(func
 
 // === S06 자연치아 CTA — 스크롤 진입 시 카드 줌인 펼침 ===
 // START: width 60%  + border-radius 40
-// END:   calc(100% - 80px) (양끝 40px 마진) + border-radius 40
-//        → max-width cap 제거. 와이드 모니터에서도 카드가 항상 좌우 40px 마진으로 풀와이드.
-//        보간은 calc() 로 연속적: calc((60 + 40·eased)% - (80·eased)px)
+// END:   width 100% (CSS max-width 가 S05 컨테이너와 동일 폭으로 캡) + border-radius 40
+//        → JS 는 부모(=<main>) 대비 %만 설정. 실제 끝상태 폭은 CSS max-width 가 결정.
+//          모든 BP 에서 S05 .s05__container 의 카드 영역과 좌·우 끝 정확히 일치.
 (function () {
   var card = document.querySelector(".section-s06");
   if (!card) return;
@@ -474,12 +474,16 @@ document.querySelectorAll(".reveal, .reveal-stagger, .reveal-card").forEach(func
 
   var START_WIDTH_PERCENT = 60;
   var END_WIDTH_PERCENT = 100;
-  var END_SIDE_MARGIN = 40;   // 끝상태에서 양끝(좌·우 각각) 마진 px
   var START_RADIUS = 40;
   var END_RADIUS = 40;
 
   function updateS06() {
-    if (window.innerWidth <= 768) return;
+    if (window.innerWidth <= 768) {
+      // 모바일 진입(리사이즈) 시 인라인 스타일 제거 → CSS @768 규칙 적용
+      card.style.width = "";
+      card.style.borderRadius = "";
+      return;
+    }
 
     var rect = card.getBoundingClientRect();
     var windowH = window.innerHeight;
@@ -493,12 +497,10 @@ document.querySelectorAll(".reveal, .reveal-stagger, .reveal-card").forEach(func
     var eased = 1 - Math.pow(1 - progress, 3);
 
     var widthPct = START_WIDTH_PERCENT + (END_WIDTH_PERCENT - START_WIDTH_PERCENT) * eased;
-    var sidePx = (END_SIDE_MARGIN * 2) * eased;  // 0 → 80
     var radius = START_RADIUS + (END_RADIUS - START_RADIUS) * eased;
 
-    // calc((60+40·eased)% - (80·eased)px) — 시작 60% 에서 끝 calc(100%-80px) 까지 연속 보간
-    card.style.width = "calc(" + widthPct + "% - " + sidePx + "px)";
-    card.style.maxWidth = "none";
+    // 부모 컨테이너(<main>) 대비 %. CSS max-width 가 S05 와 동일 폭으로 캡.
+    card.style.width = widthPct + "%";
     card.style.borderRadius = radius + "px";
   }
 
