@@ -71,6 +71,12 @@
 }
 
 .s06__content {
+  /* flex item 안에서 width 미설정 + 자식 width:100% 조합이 circular sizing 을
+     유발해 텍스트가 min-content (세로 깨짐) 으로 축소되던 문제 방지.
+     width:100% 로 부모 너비 채우고, max-width 로 디자인 폭(735) 캡. */
+  width: 100%;
+  max-width: 735px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -96,6 +102,8 @@
   line-height: 1.2;
   letter-spacing: -0.4px;
   color: var(--neutral-0);
+  word-break: keep-all;
+  white-space: normal;
 }
 
 .s06__sub {
@@ -109,6 +117,8 @@
   font-weight: 400;
   line-height: 1.5;
   color: var(--neutral-0);
+  word-break: keep-all;
+  white-space: normal;
 }
 
 .s06__btn {
@@ -150,6 +160,7 @@
 @media (max-width: 1559px) {
   .section-s06 { max-width: calc(100% - 48px); }  /* 24px 마진 */
   .s06__inner { padding: 0 80px; }                /* S05 .s05__container 매칭 */
+  .s06__content { max-width: 720px; }             /* circular sizing 방지 — text 와 동일 폭 */
   .s06__text { width: 100%; max-width: 720px; }
   .s06__title,
   .s06__sub { width: 100%; max-width: 720px; }
@@ -159,7 +170,7 @@
   .section-s06 { height: auto; min-height: 480px; }
   .s06__inner { height: auto; padding: 80px 40px; }  /* lateral 40 = S05, vertical 80 = 여백 */
   .s06__bg-img { object-position: center; }
-  .s06__content { gap: 28px; }
+  .s06__content { max-width: none; gap: 28px; }      /* 태블릿/모바일: 컨테이너 폭 채움 */
   .s06__text { width: 100%; height: auto; max-width: none; }
   .s06__title { position: relative; width: 100%; font-size: 32px; }
   .s06__sub { position: relative; top: auto; width: 100%; max-width: none; margin-top: 20px; font-size: 16px; }
