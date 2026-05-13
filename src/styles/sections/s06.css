@@ -19,14 +19,14 @@
   will-change: width, border-radius;
 }
 
-/* 배경 이미지는 카드 width 와 무관하게 풀와이드(1840) 고정 + 카드 가운데 정렬
+/* 배경 이미지는 카드 width 와 무관하게 풀와이드(2560) 고정 + 카드 가운데 정렬
    카드의 overflow: hidden 이 마스크 역할 → 카드 작으면 이미지 가운데 일부만 보임 */
 .s06__bg {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 1840px;
+  width: 2560px;
   height: 100%;
   pointer-events: none;
   z-index: 0;
