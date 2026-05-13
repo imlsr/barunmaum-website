@@ -38,15 +38,32 @@
   top: -67px;
 }
 
+/* 1400px 텍스트 컨테이너 — 가운데 정렬. 물음표 absolute 좌표는
+   이 inner 기준이라 와이드 모니터에서도 텍스트와 물음표 거리 고정. */
+.cta__inner {
+  position: relative;
+  max-width: var(--container);
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  z-index: 1;
+}
+
 .cta__q {
+  display: block;
+  max-width: none;
+  pointer-events: none;
   will-change: transform;
 }
 
+/* Q 좌표값: 기존 viewport(1920px 기준) 좌표에서 inner(1400px)의
+   좌측 시작점 260px 만큼 차감 → inner 기준 좌표로 재맵핑
+   main: 1285-260=1025 / small-l: 393-260=133 / small-t: 628.56-260=368.56 */
 .cta__q--main {
   position: absolute;
   width: 264px;
   height: 473px;
-  left: 1285px;
+  left: 1025px;
   top: -89px;
   --rotation: -4.68deg;
   animation: float-main 6s ease-in-out infinite;
@@ -59,7 +76,7 @@
   position: absolute;
   width: 141.81px;
   height: 200.39px;
-  left: 393px;
+  left: 133px;
   top: 178px;
   --rotation: 5.34deg;
   animation: float-small-l 5s ease-in-out infinite;
@@ -73,7 +90,7 @@
   position: absolute;
   width: 68.22px;
   height: 96.39px;
-  left: 628.56px;
+  left: 368.56px;
   top: 5.29px;
   --rotation: -57.93deg;
   animation: float-small-t 4s ease-in-out infinite;
